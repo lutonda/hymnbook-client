@@ -18,7 +18,12 @@
 .tim-row {
     margin-bottom: 20px;
 }
-
+.angular-with-newlines {
+  white-space: pre-wrap;
+}
+p.blockquote.blockquote-default{
+  border-color:#eee
+}
 .tim-white-buttons {
     background-color: #777777;
 }
