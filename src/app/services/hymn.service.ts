@@ -13,4 +13,7 @@ export class HymnService {
   getAllHymns(): Observable<any> {
     return this.http.get('http://127.0.0.1:8800/api/v1/hymns');
   }
+  getOneHymn(id:String): Observable<any> {
+    return this.http.get('http://127.0.0.1:8800/api/v1/hymns/'+id);
+  }
 }
