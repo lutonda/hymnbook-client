@@ -21,6 +21,14 @@
 .angular-with-newlines {
   white-space: pre-wrap;
 }
+div.search-main-session .suggestions div {
+  padding: 5px;
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+div.search-main-session .suggestions div:hover{
+  background:#eee;
+}
 p.blockquote.blockquote-default{
   border-color:#eee
 }
