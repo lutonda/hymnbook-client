@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Renderer2, OnDestroy } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -33,36 +34,10 @@ export class ComponentsComponent implements OnInit, OnDestroy {
 
     state_icon_primary = true;
     keyword = 'title';
-  
+
     datas=[];
-    cd = [
-       {
-         id: 1,
-         name: 'Dakota Gaylord PhD',
-         address: '14554 Smith Mews'
-       },
-       {
-         id: 2,
-         name: 'Maria Legros',
-         address: '002 Pagac Drives'
-       },
-       {
-         id: 3,
-         name: 'Brandyn Fritsch',
-         address: '8542 Lowe Mountain'
-       },
-       {
-         id: 4,
-         name: 'Glenna Ward V',
-         address: '1260 Oda Summit'
-       },
-       {
-         id: 5,
-         name: 'Jamie Veum',
-         address: '5017 Lowe Route'
-       }
-    ];
-    constructor( private renderer : Renderer2, config: NgbAccordionConfig, private hymnService: HymnService) {
+
+    constructor( private renderer : Renderer2, config: NgbAccordionConfig, private hymnService: HymnService, private router: Router) {
         config.closeOthers = true;
         config.type = 'info';
     }
@@ -94,15 +69,15 @@ export class ComponentsComponent implements OnInit, OnDestroy {
     }
 
     selectEvent(item) {
-      // do something with selected item
+      this.router.navigate(['hymns/'+item._id])
     }
-   
+
     onChangeSearch(val: string) {
-      
+
       // fetch remote data from here
       // And reassign the 'data' which is binded to 'data' property.
     }
-    
+
     onFocused(e){
       // do something when input is focused
     }
