@@ -1,21 +1,19 @@
+import { Observable } from 'rxjs';
 import { ClientService } from './client.service';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
-let identity='hymns';
+let identity="languages";
 @Injectable({
   providedIn: 'root'
 })
-export class HymnService {
+export class LanguageService {
 
   constructor(private http: ClientService) { }
 
-  getAllHymns(): Observable<any> {
+  getAlllanguages(): Observable<any> {
     return this.http.getAll(identity);
   }
-  getOneHymn(id:String): Observable<any> {
+  getOnelanguage(id:String): Observable<any> {
     return this.http.getOne(id,identity);
   }
 }
