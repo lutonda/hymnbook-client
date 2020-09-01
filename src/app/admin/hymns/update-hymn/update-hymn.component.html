@@ -1,0 +1,265 @@
+<div class="wrapper">
+  <div class="page-header page-header-small">
+    <div class="page-header-image rellax-header" data-rellax-speed="-18"
+      style="background-image: url('assets/img/bg6.jpg');">
+    </div>
+  </div>
+  <div class="section section-about-us d-flex container" id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">List <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Crete</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <h1 class="mt-4">Update</h1>
+        <h4> <b>{{hymn.title}}</b></h4>
+        <div class="col-md-8">
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="email" class="form-control form-control-lg" value="{{hymn.title}}" formControlName="title"
+                  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+                <small id="emailHelp" class="form-text formContro text-muted">We'll never share your email with anyone
+                  else.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Number</label>
+                <input type="email" class="form-control form-control-lg" formControlName="number"
+                  value="{{hymn.number}}" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+              </div>
+              <div class="form-group" ngModelGroup="hymn" #nameCtrl="ngModelGroup">
+                <label for="exampleInputPassword1">Language</label>
+                <select type="email" class="form-control form-control-lg" formControlName="language"
+                  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <option *ngFor="let item of languages" value="{{item._id}}">{{item.description}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Author</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+              </div>
+            </div>
+            <hr>
+            <h2>Parts</h2>
+            <blockquote>
+
+              <div class="blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
+
+                <textarea class="form-control" name="name" rows="4" cols="80"
+                  placeholder="You can write your text here..." formControlName="{{i}}[text]">{{item.text}}</textarea>
+              <div class="form-check form-check-radio  form-check-inline" *ngFor="let type of typeParts">
+                <label class="form-check-label">
+                  <input class="form-check-input" id="exampleRadios1" name="exampleRadios" type="radio" formControlName="{{i}}[type]" value="{{type._id}}" [checked]="item.typePart._id==type._id">
+                  <span class="form-check-sign"></span> {{type.description}}
+                </label>
+              </div>
+              <button class="hidden btn btn-sm btn-simple pull-right"><i class="now-ui-icons arrows-1_refresh-69"></i></button>
+              </div>
+            </blockquote>
+            <button type="button" class="btn btn-default btn-simple" (click)="addPart()">Add new</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <h2 class="title">Who we are?</h2>
+        <h5 class="description">According to the National Oceanic and Atmospheric Administration, Ted, Scambos,
+          NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice extent in
+          the Pacific and a late drop in ice extent in the Barents Sea.</h5>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+
+  <div class="section section-about-us">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">Who we are?</h2>
+          <h5 class="description">According to the National Oceanic and Atmospheric Administration, Ted, Scambos,
+            NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice extent
+            in the Pacific and a late drop in ice extent in the Barents Sea.</h5>
+        </div>
+      </div>
+      <div class="separator separator-primary"></div>
+      <div class="section-story-overview">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="image-container image-left" style="background-image: url('assets/img/login.jpg')">
+              <!-- First image on the left side -->
+              <p class="blockquote blockquote-primary">"Over the span of the satellite record, Arctic sea ice has been
+                declining significantly, while sea ice in the Antarctichas increased very slightly"
+                <br>
+                <br>
+                <small>-NOAA</small>
+              </p>
+            </div>
+            <!-- Second image on the left side of the article -->
+            <div class="image-container" style="background-image: url('assets/img/bg3.jpg')"></div>
+          </div>
+          <div class="col-md-5">
+            <!-- First image on the right side, above the article -->
+            <div class="image-container image-right" style="background-image: url('assets/img/bg1.jpg')"></div>
+            <h3>So what does the new record for the lowest level of winter ice actually mean</h3>
+            <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process
+              will continue whatever happens with climate change. Even if the Arctic continues to be one of the
+              fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every
+              winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
+            </p>
+            <p>
+              For a start, it does not automatically follow that a record amount of ice will melt this summer. More
+              important for determining the size of the annual thaw is the state of the weather as the midnight sun
+              approaches and temperatures rise. But over the more than 30 years of satellite records, scientists have
+              observed a clear pattern of decline, decade-by-decade.
+            </p>
+            <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process
+              will continue whatever happens with climate change. Even if the Arctic continues to be one of the
+              fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every
+              winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section section-team text-center">
+    <div class="container">
+      <h2 class="title">Here is our team</h2>
+      <div class="team">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="team-player">
+              <img src="assets/img/avatar.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+              <h4 class="title">Romina Hadid</h4>
+              <p class="category text-primary">Model</p>
+              <p class="description">You can write here details about one of your team members. You can give more
+                details about what they do. Feel free to add some
+                <a href="#">links</a> for people to be able to follow them outside the site.</p>
+              <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+              <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-instagram"></i></a>
+              <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-facebook-square"></i></a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-player">
+              <img src="assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+              <h4 class="title">Ryan Tompson</h4>
+              <p class="category text-primary">Designer</p>
+              <p class="description">You can write here details about one of your team members. You can give more
+                details about what they do. Feel free to add some
+                <a href="#">links</a> for people to be able to follow them outside the site.</p>
+              <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+              <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-player">
+              <img src="assets/img/eva.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+              <h4 class="title">Eva Jenner</h4>
+              <p class="category text-primary">Fashion</p>
+              <p class="description">You can write here details about one of your team members. You can give more
+                details about what they do. Feel free to add some
+                <a href="#">links</a> for people to be able to follow them outside the site.</p>
+              <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-google-plus"></i></a>
+              <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-youtube"></i></a>
+              <a href="#pablo" class="btn btn-primary btn-icon btn-round"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section section-contact-us text-center">
+    <div class="container">
+      <h2 class="title">Want to work with us?</h2>
+      <p class="description">Your project is very important to us.</p>
+      <div class="row">
+        <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
+          <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus===true}">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="now-ui-icons users_circle-08"></i>
+              </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus=true"
+              (blur)="focus=false">
+          </div>
+          <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus1===true}">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="now-ui-icons ui-1_email-85"></i>
+              </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus1=true"
+              (blur)="focus1=false">
+          </div>
+          <div class="textarea-container">
+            <textarea class="form-control" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
+          </div>
+          <div class="send-button">
+            <a href="#pablo" class="btn btn-primary btn-round btn-block btn-lg">Send Message</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer footer-default">
+    <div class="container">
+      <nav>
+        <ul>
+          <li>
+            <a href="https://www.creative-tim.com">
+              Creative Tim
+            </a>
+          </li>
+          <li>
+            <a href="https://www.creative-tim.com/about-us">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="http://blog.creative-tim.com">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md">
+              MIT License
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright">
+        &copy;
+        {{data | date: 'yyyy'}}, Designed by
+        <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+      </div>
+    </div>
+  </footer>
+</div>
