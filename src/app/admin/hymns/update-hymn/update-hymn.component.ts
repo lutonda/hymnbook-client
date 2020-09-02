@@ -13,6 +13,8 @@ import { Component, OnInit, Output , EventEmitter} from '@angular/core';
 export class UpdateHymnComponent implements OnInit {
 
   hymn: any = {};
+  parts_text:Array<string>=[];
+  parts_type:Array<string>=[];
   languages: Array<any> = [];
   typeParts: Array<any> = [];
   constructor(
@@ -36,6 +38,8 @@ export class UpdateHymnComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     this.hymnService.getOneHymn(id).subscribe(data => {
       this.hymn = data.data
+      this.hymn.parts.forEach(x => {
+        this.parts_text.push(x.text)})
      // this.form.value = data.data
     }
     )
