@@ -29,6 +29,8 @@ import { UpdatePartsComponent } from './admin/parts/update-parts/update-parts.co
 import { CreatePartsComponent } from './admin/parts/create-parts/create-parts.component';
 import { FromPartsComponent } from './admin/parts/from-parts/from-parts.component';
 import { FormPartsComponent } from './admin/parts/form-parts/form-parts.component';
+import { SearchboxComponent } from './components/searchbox/searchbox.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { FormPartsComponent } from './admin/parts/form-parts/form-parts.componen
     UpdatePartsComponent,
     CreatePartsComponent,
     FromPartsComponent,
-    FormPartsComponent
+    FormPartsComponent,
+    SearchboxComponent
   ],
   imports: [
 

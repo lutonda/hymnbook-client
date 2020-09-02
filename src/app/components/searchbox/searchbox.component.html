@@ -1,0 +1,10 @@
+<div class="search-main-session">
+      <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+        <input type="text" [(ngModel)]="typeahead" placeholder="Type ahead !" (input)="suggest()"
+          class="form-control" placeholder="Find a Hymn by title or number" (focus)="focus1=true" style="height: 20px; padding: 10px;
+              font-size: 15px;" (blur)="focus1=false">
+        <div class="input-group-append" style="height: 20px;">
+          <span class="input-group-text"><i class="now-ui-icons ui-1_zoom-bold" style="padding-left: 5px;"></i></span>
+        </div>
+    </div>
+</div>
