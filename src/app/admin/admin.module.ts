@@ -1,9 +1,10 @@
+import { FooterComponent } from './../shared/footer/footer.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { RouterModule } from '@angular/router';
 import { NouisliderModule } from 'ng2-nouislider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormPartsComponent } from './parts/form-parts/form-parts.component';
 import { CreatePartsComponent } from './parts/create-parts/create-parts.component';
 import { UpdatePartsComponent } from './parts/update-parts/update-parts.component';
@@ -13,6 +14,7 @@ import { CreateHymnComponent } from './hymns/create-hymn/create-hymn.component';
 import { SidebarComponent } from './../shared/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AdminComponent } from './admin.component';
 
 
 
@@ -24,10 +26,14 @@ import { CommonModule } from '@angular/common';
     ListHymnComponent,
     UpdatePartsComponent,
     CreatePartsComponent,
-    FormPartsComponent,],
+    FormPartsComponent,
+    AdminComponent
+],
   imports: [
-    CommonModule,
+    NgbModule,
     FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
     NgbModule,
     NouisliderModule,
     RouterModule,
