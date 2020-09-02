@@ -91,7 +91,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
   suggest() {
     this.suggestions = this.datas
       .filter(c => {
-        let final = c.number==this.typeahead || this.typeahead.length>2 && c.title.includes(this.typeahead[0].toUpperCase()+this.typeahead.substring(1).toLowerCase())
+        let final = c.number==this.typeahead || this.typeahead.length>2 && c.title.toLowerCase().includes(this.typeahead.toLowerCase())
         return final;
       }).slice(0, 10);
   }
