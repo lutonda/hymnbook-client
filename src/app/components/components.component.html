@@ -9,24 +9,8 @@
         <img class="n-logo" src="assets/img/now-logo.png" alt="">
         <h1 class="h1-seo">Now UI Kit.</h1>
         <h3>A beautiful Bootstrap 4 UI kit. Yours free.</h3>
-        <div class="row align-items-center search-main-session">
-          <div class="col-sm-6 col-lg-8 " style="margin:auto">
-            <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
-              <input type="text" [(ngModel)]="typeahead" placeholder="Type ahead !" (input)="suggest()"
-                class="form-control" placeholder="Find a Hymn by title or number" (focus)="focus1=true" style="padding: 25px;
-                    font-size: 26px;" (blur)="focus1=false">
-              <div class="input-group-append">
-                <span class="input-group-text"><i class="now-ui-icons ui-1_zoom-bold"></i></span>
-              </div>
-            </div>
 
-            <div class="suggestions" *ngIf="suggestions.length" style="padding:15px;background: #FFF;
-            border-radius: 10px;
-            color: #000;">
-              <div *ngFor="let s of suggestions" (click)="selectEvent(s)">{{s.number}}-{{s.title}}</div>
-            </div>
-          </div>
-        </div>
+        <app-searchbox></app-searchbox>
 
       </div>
       <h6 class="category category-absolute">Designed by
