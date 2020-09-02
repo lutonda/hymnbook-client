@@ -22,23 +22,16 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HymnsComponent } from './pages/hymns/hymns.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { CreateHymnComponent } from './admin/hymns/create-hymn/create-hymn.component';
-import { UpdateHymnComponent } from './admin/hymns/update-hymn/update-hymn.component';
-import { ListHymnComponent } from './admin/hymns/list-hymn/list-hymn.component';
-import { UpdatePartsComponent } from './admin/parts/update-parts/update-parts.component';
-import { CreatePartsComponent } from './admin/parts/create-parts/create-parts.component';
-import { FromPartsComponent } from './admin/parts/from-parts/from-parts.component';
-import { FormPartsComponent } from './admin/parts/form-parts/form-parts.component';
-import { HomeComponent } from './pages/home/home.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
 
-    NavbarComponent
+    NavbarComponent,
+
+    FooterComponent
   ],
   imports: [
 
