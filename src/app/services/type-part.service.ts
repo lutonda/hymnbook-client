@@ -1,21 +1,18 @@
 import { ClientService } from './client.service';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
-let identity='hymns';
+let identity="type_parts";
 @Injectable({
   providedIn: 'root'
 })
-export class HymnService {
-
+export class TypePartService {
   constructor(private http: ClientService) { }
 
-  getAllHymns(): Observable<any> {
+  getAllTypePart(): Observable<any> {
     return this.http.getAll(identity);
   }
-  getOneHymn(id:String): Observable<any> {
+  getOneTypePart(id:String): Observable<any> {
     return this.http.getOne(id,identity);
   }
 }

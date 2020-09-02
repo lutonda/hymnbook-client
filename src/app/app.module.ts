@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
@@ -21,14 +21,31 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HymnsComponent } from './pages/hymns/hymns.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { CreateHymnComponent } from './admin/hymns/create-hymn/create-hymn.component';
+import { UpdateHymnComponent } from './admin/hymns/update-hymn/update-hymn.component';
+import { ListHymnComponent } from './admin/hymns/list-hymn/list-hymn.component';
+import { UpdatePartsComponent } from './admin/parts/update-parts/update-parts.component';
+import { CreatePartsComponent } from './admin/parts/create-parts/create-parts.component';
+import { FromPartsComponent } from './admin/parts/from-parts/from-parts.component';
+import { FormPartsComponent } from './admin/parts/form-parts/form-parts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HymnsComponent
+    HymnsComponent,
+    SidebarComponent,
+    CreateHymnComponent,
+    UpdateHymnComponent,
+    ListHymnComponent,
+    UpdatePartsComponent,
+    CreatePartsComponent,
+    FromPartsComponent,
+    FormPartsComponent
   ],
   imports: [
+
     BrowserAnimationsModule,
     NgbModule,
     FormsModule,
@@ -37,7 +54,7 @@ import { HymnsComponent } from './pages/hymns/hymns.component';
     ComponentsModule,
     ExamplesModule,
     HttpClientModule,
-
+    ReactiveFormsModule,
 
     // for HttpClient use:
     LoadingBarHttpClientModule,

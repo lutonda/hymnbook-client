@@ -512,3 +512,13 @@ p.blockquote.blockquote-default{
         display: none !important;
     }
 }
+
+
+.hidden{
+  display: none;
+}
+.pull-right
+{
+  right: 20px;
+  position: absolute;
+}
