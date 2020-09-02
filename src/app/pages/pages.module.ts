@@ -25,18 +25,9 @@ import { CommonModule } from '@angular/common';
       AutocompleteLibModule
     ],
   declarations: [
-
     HymnsComponent,
-    //SidebarComponent,
-    //CreateHymnComponent,
-    //UpdateHymnComponent,
-    //ListHymnComponent,
-    //UpdatePartsComponent,
-    //CreatePartsComponent,
-
-    //FormPartsComponent,
-    SearchboxComponent,
-    HomeComponent
+    HomeComponent,
+    SearchboxComponent
   ],
   exports:[  ]
 })
