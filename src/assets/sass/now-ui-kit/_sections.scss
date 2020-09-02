@@ -44,7 +44,6 @@
     }
     .container{
         height: 100%;
-        z-index: 1;
         text-align: center;
         position: relative;
 
@@ -94,9 +93,7 @@
         @include linear-gradient(rgba($black-color,.20), rgba(224, 23, 3, 0.6));
     }
 
-    .container{
-        z-index: 2;
-    }
+   
 
 }
 
