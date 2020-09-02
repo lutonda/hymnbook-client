@@ -1,3 +1,4 @@
+import { HomeComponent } from './pages/home/home.component';
 import { UpdateHymnComponent } from './admin/hymns/update-hymn/update-hymn.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
@@ -14,7 +15,7 @@ import { ListHymnComponent } from './admin/hymns/list-hymn/list-hymn.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'index', pathMatch: 'full' },
-    { path: 'index',                        component: ComponentsComponent },
+    { path: 'index',                        component: HomeComponent },
     { path: 'nucleoicons',                  component: NucleoiconsComponent },
     { path: 'examples/landing',             component: LandingComponent },
     { path: 'examples/login',               component: LoginComponent },

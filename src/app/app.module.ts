@@ -1,3 +1,4 @@
+import { PagesModule } from './pages/pages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,20 +30,14 @@ import { UpdatePartsComponent } from './admin/parts/update-parts/update-parts.co
 import { CreatePartsComponent } from './admin/parts/create-parts/create-parts.component';
 import { FromPartsComponent } from './admin/parts/from-parts/from-parts.component';
 import { FormPartsComponent } from './admin/parts/form-parts/form-parts.component';
+import { HomeComponent } from './pages/home/home.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    HymnsComponent,
-    SidebarComponent,
-    CreateHymnComponent,
-    UpdateHymnComponent,
-    ListHymnComponent,
-    UpdatePartsComponent,
-    CreatePartsComponent,
-    FromPartsComponent,
-    FormPartsComponent
+
+    NavbarComponent
   ],
   imports: [
 
@@ -55,7 +50,7 @@ import { FormPartsComponent } from './admin/parts/form-parts/form-parts.componen
     ExamplesModule,
     HttpClientModule,
     ReactiveFormsModule,
-
+    PagesModule,
     // for HttpClient use:
     LoadingBarHttpClientModule,
 
