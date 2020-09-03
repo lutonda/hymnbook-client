@@ -3,7 +3,7 @@ import { LanguageService } from './../../../services/language.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm, FormArray, FormBuilder, Validators, AbstractControl } from "@angular/forms";
 import { HymnService } from './../../../services/hymn.service';
-import { Component, OnInit, Output , EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-update-hymn',
@@ -13,18 +13,18 @@ import { Component, OnInit, Output , EventEmitter} from '@angular/core';
 export class UpdateHymnComponent implements OnInit {
 
   hymn: any = {};
-  parts_text:Array<string>=[];
-  parts_type:Array<string>=[];
+  parts_text: Array<string> = [];
+  parts_type: Array<string> = [];
   languages: Array<any> = [];
   typeParts: Array<any> = [];
   constructor(
     private hymnService: HymnService,
     private languagesService: LanguageService,
-    private typePartService:TypePartService,
+    private typePartService: TypePartService,
     private route: ActivatedRoute,
     private fb: FormBuilder) { }
 
-   @Output('newSubForm') submitFormObjectToParent: EventEmitter<any> = new EventEmitter();
+  @Output('newSubForm') submitFormObjectToParent: EventEmitter<any> = new EventEmitter();
 
 
   form = this.fb.group({
@@ -39,21 +39,24 @@ export class UpdateHymnComponent implements OnInit {
     this.hymnService.getOneHymn(id).subscribe(data => {
       this.hymn = data.data
       this.hymn.parts.forEach(x => {
-        this.parts_text.push(x.text)})
-     // this.form.value = data.data
+        this.parts_text.push(x.text)
+      })
+      // this.form.value = data.data
     }
     )
     this.languagesService.getAlllanguages().subscribe(data => {
       this.languages = data.data
     })
-    this.typePartService.getAllTypePart().subscribe(data=>this.typeParts=data.data)
+    this.typePartService.getAllTypePart().subscribe(data => this.typeParts = data.data)
   }
   onSubmit(f: NgForm) {
     console.log(f.value);  // {name: {first: 'Nancy', last: 'Drew'}, email: ''}
     console.log(f.valid);  // true
   }
 
-
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
   //-------------------
 
   submit() {
@@ -69,8 +72,8 @@ export class UpdateHymnComponent implements OnInit {
     const control = this.form.get('hobbies') as FormArray;
     control.push(this.fb.group(hobby));
   }
-  addPart(){
-    this.hymn.parts.push({text:'',typePart:{}})
+  addPart() {
+    this.hymn.parts.push({ text: '', typePart: {} })
   }
   minFormArrayLength(min: number) {
     return (c: AbstractControl): { [key: string]: any } => {
