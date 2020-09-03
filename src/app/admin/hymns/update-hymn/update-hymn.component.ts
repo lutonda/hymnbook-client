@@ -1,3 +1,4 @@
+
 import { TypePartService } from './../../../services/type-part.service';
 import { LanguageService } from './../../../services/language.service';
 import { ActivatedRoute } from '@angular/router';
@@ -36,26 +37,24 @@ export class UpdateHymnComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id');
-    this.hymnService.getOneHymn(id).subscribe(data => {
-      this.hymn = data.data
-      this.hymn.parts.forEach(x => {
-        this.parts_text.push(x.text)
-      })
-      // this.form.value = data.data
-    }
-    )
+    this.hymnService.getOneHymn(id).subscribe(data => this.hymn = data.data)
     this.languagesService.getAlllanguages().subscribe(data => {
       this.languages = data.data
     })
     this.typePartService.getAllTypePart().subscribe(data => this.typeParts = data.data)
   }
-  onSubmit(f: NgForm) {
-    console.log(f.value);  // {name: {first: 'Nancy', last: 'Drew'}, email: ''}
-    console.log(f.valid);  // true
+  save() {
+    this.hymnService.update(this.hymn).subscribe(data=>{
+      let u=data;
+    });  
+  }
+
+  addPart() {
+    this.hymn.parts.push({ text: '', typePart: {} })
   }
 
   compareFn(c1: any, c2: any): boolean {
-    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+    return c1 && c2 ? c1._id === c2._id : c1 === c2;
   }
   //-------------------
 
@@ -68,13 +67,6 @@ export class UpdateHymnComponent implements OnInit {
      this.form.reset();*/
   }
 
-  addNewHobby(hobby: any) {
-    const control = this.form.get('hobbies') as FormArray;
-    control.push(this.fb.group(hobby));
-  }
-  addPart() {
-    this.hymn.parts.push({ text: '', typePart: {} })
-  }
   minFormArrayLength(min: number) {
     return (c: AbstractControl): { [key: string]: any } => {
       if (c.value.length >= min) return null;
