@@ -18,4 +18,8 @@ export class HymnService {
   getOneHymn(id:String): Observable<any> {
     return this.http.getOne(id,identity);
   }
+
+  update(data): Observable<any>{
+    return this.http.update(data._id,data,identity)
+  }
 }
