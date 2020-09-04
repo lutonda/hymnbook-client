@@ -22,4 +22,8 @@ export class HymnService {
   update(data): Observable<any>{
     return this.http.update(data._id,data,identity)
   }
+
+  create(data): Observable<any>{
+    return this.http.create(data,identity)
+  }
 }
