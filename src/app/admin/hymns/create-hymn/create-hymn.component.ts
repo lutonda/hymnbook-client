@@ -12,6 +12,7 @@ import { Part } from 'app/models/part';
 
 @Component({
   selector: 'app-create-hymn',
+
   templateUrl: './create-hymn.component.html',
   styleUrls: ['./create-hymn.component.css']
 })
