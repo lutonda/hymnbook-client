@@ -1,0 +1,14 @@
+.buttons-container, .list-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-container {
+  flex-direction: row;
+}
+
+.list-container {
+  flex-direction: column;
+}
+
