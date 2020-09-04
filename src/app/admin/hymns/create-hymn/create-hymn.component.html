@@ -39,7 +39,7 @@
         <h4> <b>{{hymn.title}}</b></h4>
         <div class="col-md-12 col-lg-8 col-sm-12">
 
-          <form [formGroup]="form" (ngSubmit)="submit()">
+          <form [formGroup]="form" (ngSubmit)="save()">
             <div class="col-md-12">
               <div class="form-group">
                 <label for="exampleInputEmail1">Title</label>
@@ -70,7 +70,7 @@
             <hr>
             <h2>Parts</h2>
             <blockquote>
-              
+
               <div class="blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
 
                 <textarea class="form-control" rows="4" cols="80"
