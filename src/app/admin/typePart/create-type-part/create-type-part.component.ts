@@ -22,8 +22,6 @@ export class CreateTypePartComponent implements OnInit {
   ngOnInit(): void {}
 
   save() {
-    this.service.create(this.typePart).subscribe(data => {
-      let u = data;
-    });
+    
   }
 }

@@ -21,6 +21,7 @@ export class CreateHymnComponent implements OnInit {
   hymn: Hymn = new Hymn();
   languages: Array<Language> = [];
   typeParts: Array<TypePart> = [];
+
   title="Create Hymn"
 
   constructor(
@@ -43,6 +44,7 @@ export class CreateHymnComponent implements OnInit {
     this.languagesService.getAlllanguages().subscribe(data => this.languages = data.data)
     this.typePartService.getAllTypePart().subscribe(data => this.typeParts = data.data)
   }
+  
   save() {
     this.hymnService.create(this.hymn).subscribe(data=>{
       let u=data;

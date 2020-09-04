@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 let identity='hymns';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,7 @@ export class HymnService {
   }
 
   update(data): Observable<any>{
-    return this.http.update(data._id,data,identity)
+    return this.http.update(data._id, data,identity)
   }
 
   create(data): Observable<any>{

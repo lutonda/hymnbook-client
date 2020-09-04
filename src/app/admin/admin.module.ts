@@ -20,6 +20,9 @@ import { AdminComponent } from './admin.component';
 import { ListTypePartsComponent } from './typePart/list-type-parts/list-type-parts.component';
 import { FormHymnComponent } from './hymns/form-hymn/form-hymn.component';
 import { UpdateTypePartComponent } from './typePart/update-type-part/update-type-part.component';
+import { CreateAuthorComponent } from './author/create-author/create-author.component';
+import { ListAuthorComponent } from './author/list-author/list-author.component';
+import { UpdateAuthorComponent } from './author/update-author/update-author.component';
 
 
 
@@ -37,7 +40,10 @@ import { UpdateTypePartComponent } from './typePart/update-type-part/update-type
     FormHymnComponent,
     AdminNavbarComponent,
     CreateTypePartComponent,
-    UpdateTypePartComponent
+    UpdateTypePartComponent,
+    CreateAuthorComponent,
+    ListAuthorComponent,
+    UpdateAuthorComponent
 ],
   imports: [
     NgbModule,
