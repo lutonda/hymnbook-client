@@ -15,6 +15,7 @@ import { SidebarComponent } from './../shared/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
+import { ListTypePartsComponent } from './typePart/list-typeParts/list-type-parts/list-type-parts.component';
 
 
 
@@ -27,7 +28,8 @@ import { AdminComponent } from './admin.component';
     UpdatePartsComponent,
     CreatePartsComponent,
     FormPartsComponent,
-    AdminComponent
+    AdminComponent,
+    ListTypePartsComponent
 ],
   imports: [
     NgbModule,
