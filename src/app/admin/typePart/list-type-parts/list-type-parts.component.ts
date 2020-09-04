@@ -1,4 +1,4 @@
-import { TypePartService } from './../../../../services/type-part.service';
+import { TypePartService } from './../../../services/type-part.service';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 
 @Component({

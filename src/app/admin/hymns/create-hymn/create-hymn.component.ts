@@ -42,7 +42,6 @@ export class CreateHymnComponent implements OnInit {
     this.typePartService.getAllTypePart().subscribe(data => this.typeParts = data.data)
   }
   save() {
-    alert(JSON.stringify(this.hymn))
     this.hymnService.create(this.hymn).subscribe(data=>{
       let u=data;
     });
