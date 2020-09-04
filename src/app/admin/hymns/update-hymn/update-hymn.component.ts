@@ -5,9 +5,27 @@ import { ActivatedRoute } from '@angular/router';
 import { NgForm, FormArray, FormBuilder, Validators, AbstractControl } from "@angular/forms";
 import { HymnService } from './../../../services/hymn.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-update-hymn',
+  animations: [
+    trigger('items', [
+      transition(':enter', [
+        style({ transform: 'scale(0.5)', opacity: 0 }),  // initial
+        animate('1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
+          style({ transform: 'scale(1)', opacity: 1 }))  // final
+      ]), transition(':leave', [
+        style({ transform: 'scale(1)', opacity: 1, height: '*' }),
+        animate('1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
+          style({
+            transform: 'scale(0.5)', opacity: 0,
+            height: '0px', margin: '0px'
+          }))
+      ])
+    ],
+    )
+  ],
   templateUrl: './update-hymn.component.html',
   styleUrls: ['./update-hymn.component.css']
 })
@@ -44,15 +62,19 @@ export class UpdateHymnComponent implements OnInit {
     this.typePartService.getAllTypePart().subscribe(data => this.typeParts = data.data)
   }
   save() {
-    this.hymnService.update(this.hymn).subscribe(data=>{
-      let u=data;
-    });  
+    this.hymnService.update(this.hymn).subscribe(data => {
+      let u = data;
+    });
   }
 
   addPart() {
-    this.hymn.parts.push({ text: '', typePart: {} })
+    if (this.hymn.parts[this.hymn.parts.length - 1].text)
+      this.hymn.parts.push({ text: '', typePart: {} })
   }
-
+  removePart(index) {
+    if (!this.hymn.parts.length) return;
+    this.hymn.parts.splice(index, 1);
+  }
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1._id === c2._id : c1 === c2;
   }

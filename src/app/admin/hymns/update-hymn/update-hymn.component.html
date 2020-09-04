@@ -35,7 +35,6 @@
       </nav>
 
       <div class="container">
-        <div class="row"></div>
         <h1 class="mt-4">Update</h1>
         <h4> <b>{{hymn.title}}</b></h4>
         <div class="col-md-12">
@@ -44,22 +43,23 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="exampleInputEmail1">Title</label>
-                <input type="email" class="form-control form-control-lg" [(ngModel)]="hymn.title" formControlName="title"
-                  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+                <input type="email" class="form-control form-control-lg" [(ngModel)]="hymn.title"
+                  formControlName="title" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
                 <small id="emailHelp" class="form-text formContro text-muted">We'll never share your email with anyone
                   else.</small>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Number</label>
                 <input type="email" class="form-control form-control-lg" formControlName="number"
-                [(ngModel)]="hymn.number" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  [(ngModel)]="hymn.number" id="exampleInputEmail1" aria-describedby="emailHelp"
                   placeholder="Enter email">
               </div>
               <div class="form-group" ngModelGroup="hymn" #nameCtrl="ngModelGroup">
                 <label for="exampleInputPassword1">Language</label>
-                <select  [(ngModel)]="hymn.language" name="language" class="form-control form-control-lg"
-                  id="exampleInputEmail1" aria-describedby="emailHelp" [ngModelOptions]="{standalone: true}" [compareWith]="compareFn">
-                  <option *ngFor="let item of languages" [ngValue]="item" >{{item.description}}</option>
+                <select [(ngModel)]="hymn.language" name="language" class="form-control form-control-lg"
+                  id="exampleInputEmail1" aria-describedby="emailHelp" [ngModelOptions]="{standalone: true}"
+                  [compareWith]="compareFn">
+                  <option *ngFor="let item of languages" [ngValue]="item">{{item.description}}</option>
                 </select>
               </div>
               <div class="form-group">
@@ -68,29 +68,49 @@
                   placeholder="Enter email">
               </div>
             </div>
+
             <hr>
-            <h2>Parts</h2>
+            <div class="row">
+              <div class="col-md-8">
+                <h2>Parts</h2>
+              </div>
+              <div class="col-md-4">
+                <button type="button" class="btn btn-default btn-simple pull-right" (click)="addPart()">
+                  <i class="now-ui-icons ui-1_simple-add"></i>
+                </button>
+              </div>
+            </div>
+
             <blockquote>
+              <div @list class="list-container">
+                <div @items class="box blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
 
-              <div class="blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
+                  <textarea class="form-control" rows="4" cols="80" placeholder="You can write your text here..."
+                    [(ngModel)]="item.text" name="text_{{i}}" [ngModelOptions]="{standalone: true}"></textarea>
 
-                <textarea class="form-control" rows="4" cols="80"
-                  placeholder="You can write your text here..."  [(ngModel)]="item.text" name="text_{{i}}" [ngModelOptions]="{standalone: true}"></textarea>
-
-                <div class="form-check form-check-radio  form-check-inline" *ngFor="let typepart of typeParts">
-                  <label class="form-check-label">
-                    <input class="form-check-input" [(ngModel)]="item.typePart._id" name="{{i}}_typePart" type="radio"
-                       value="{{typepart._id}}" [ngModelOptions]="{standalone: true}" >
-                    <span class="form-check-sign"></span>
-                  </label>
-                  {{typepart.description}}
+                  <div class="form-check form-check-radio  form-check-inline" *ngFor="let typepart of typeParts">
+                    <label class="form-check-label">
+                      <input class="form-check-input" [(ngModel)]="item.typePart._id" name="{{i}}_typePart" type="radio"
+                        value="{{typepart._id}}" [ngModelOptions]="{standalone: true}">
+                      <span class="form-check-sign"></span>
+                    </label>
+                    {{typepart.description}}
+                  </div>
+                  <button class="btn btn-sm btn-simple pull-right" (click)="removePart(i)">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
                 </div>
-                <button class="hidden btn btn-sm btn-simple pull-right"><i
-                    class="now-ui-icons arrows-1_refresh-69"></i></button>
               </div>
             </blockquote>
-            <button type="button" class="btn btn-default btn-simple" (click)="addPart()">Add new</button>
-            <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+            <div class="row">
+              <button type="button" class="btn btn-default btn-simple pull-right" (click)="addPart()">
+                <i class="now-ui-icons ui-1_simple-add"></i>
+              </button>
+            </div>
+            <div class="row">
+              <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+            </div>
+
           </form>
         </div>
       </div>
