@@ -1,3 +1,4 @@
+import { CreateTypePartComponent } from './typePart/create-type-part/create-type-part.component';
 import { AdminNavbarComponent } from './../shared/admin-navbar/admin-navbar.component';
 import { FooterComponent } from './../shared/footer/footer.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { ListTypePartsComponent } from './typePart/list-type-parts/list-type-parts.component';
 import { FormHymnComponent } from './hymns/form-hymn/form-hymn.component';
+import { UpdateTypePartComponent } from './typePart/update-type-part/update-type-part.component';
 
 
 
@@ -33,7 +35,9 @@ import { FormHymnComponent } from './hymns/form-hymn/form-hymn.component';
     AdminComponent,
     ListTypePartsComponent,
     FormHymnComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    CreateTypePartComponent,
+    UpdateTypePartComponent
 ],
   imports: [
     NgbModule,
