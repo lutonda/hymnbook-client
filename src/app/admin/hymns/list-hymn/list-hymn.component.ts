@@ -11,7 +11,7 @@ export class ListHymnComponent implements OnInit {
   constructor(private service:HymnService) { }
 
   ngOnInit(): void {
-    this.service.getAllHymns().subscribe(data=>this.hymns=data.data)
+    this.service.getAllHymns().subscribe(data=>this.hymns=data.data.sort((x,y)=>x.number>y.number?1:-1))
   }
 
 }
