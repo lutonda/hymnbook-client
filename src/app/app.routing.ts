@@ -1,3 +1,4 @@
+import { CreateHymnComponent } from './admin/hymns/create-hymn/create-hymn.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UpdateHymnComponent } from './admin/hymns/update-hymn/update-hymn.component';
 import { NgModule } from '@angular/core';
@@ -23,7 +24,7 @@ const routes: Routes =[
     { path: 'hymns/:id',                    component: HymnsComponent },
 
     { path: 'admin/hymns',                  component: ListHymnComponent },
-    { path: 'admin/hymns/create',           component: HymnsComponent },
+    { path: 'admin/hymns/create',           component: CreateHymnComponent },
     { path: 'admin/hymns/update/:id',       component: UpdateHymnComponent },
     { path: 'admin/hymns/:id',              component: HymnsComponent }
 ];
