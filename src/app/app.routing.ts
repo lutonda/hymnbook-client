@@ -1,3 +1,4 @@
+import { UpdateTypePartComponent } from './admin/typePart/update-type-part/update-type-part.component';
 import { CreateTypePartComponent } from './admin/typePart/create-type-part/create-type-part.component';
 import { ListTypePartsComponent } from './admin/typePart/list-type-parts/list-type-parts.component';
 import { CreateHymnComponent } from './admin/hymns/create-hymn/create-hymn.component';
@@ -31,7 +32,8 @@ const routes: Routes =[
     { path: 'admin/hymns/:id',              component: HymnsComponent },
 
     { path: 'admin/type-part',              component: ListTypePartsComponent},
-    { path: 'admin/type-part/create',       component: CreateTypePartComponent}
+    { path: 'admin/type-part/create',       component: CreateTypePartComponent},
+    { path: 'admin/type-part/update/:id',   component: UpdateTypePartComponent}
 
 ];
 

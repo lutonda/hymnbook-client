@@ -9,7 +9,7 @@ let identity="type_parts";
 export class TypePartService {
   constructor(private http: ClientService) { }
 
-  
+
   getAllTypePart(): Observable<any> {
     return this.http.getAll(identity);
   }
