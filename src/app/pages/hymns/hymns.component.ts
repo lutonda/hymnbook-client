@@ -1,3 +1,4 @@
+import { Hymn } from './../../models/hymn';
 import { HymnService } from 'app/services/hymn.service';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class HymnsComponent implements OnInit {
   @Input() searchData=new EventEmitter();
-  hymn={title:'...',parts:[]};
+  hymn= new Hymn();
   order=0;
   incress(){
     this.order++;

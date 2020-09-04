@@ -15,12 +15,15 @@ export class SearchboxComponent implements OnInit {
   constructor(private hymnService: HymnService, private router: Router) { }
 
   @Output() searchData=new EventEmitter();
+
   filterValue:any={}
+
   ngOnInit(): void {
     this.hymnService.getAllHymns().subscribe((d)=>{
         this.datas=d.data;
     });
   }
+
   typeahead:string;
   suggestions: Array<any>=[];
 
@@ -29,9 +32,11 @@ export class SearchboxComponent implements OnInit {
     this.suggestions=[];
     this.searchData.emit(item)
   }
+  
   selectEvent(item:any){
     this.searchData=item;
   }
+  
   suggest(){
     this.suggestions = this.datas.filter(c => {
       let final = c.number==this.typeahead || this.typeahead.length>2 && c.title.includes(this.typeahead[0].toUpperCase()+this.typeahead.substring(1).toLowerCase())
