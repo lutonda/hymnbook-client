@@ -1,3 +1,4 @@
+import { Part } from 'app/models/part';
 
 import { TypePartService } from './../../../services/type-part.service';
 import { LanguageService } from './../../../services/language.service';
@@ -68,11 +69,13 @@ export class UpdateHymnComponent implements OnInit {
   }
 
   addPart() {
-    if (this.hymn.parts[this.hymn.parts.length - 1].text)
-      this.hymn.parts.push({ text: '', typePart: {} })
+    alert(this.hymn.parts.length)
+    if (this.hymn.parts.length === 0 || this.hymn.parts[this.hymn.parts.length - 1].text)
+      this.hymn.parts.push(new Part())
   }
   removePart(index) {
-    if (!this.hymn.parts.length) return;
+    if (this.hymn.parts.length === 1)
+      return;
     this.hymn.parts.splice(index, 1);
   }
   compareFn(c1: any, c2: any): boolean {

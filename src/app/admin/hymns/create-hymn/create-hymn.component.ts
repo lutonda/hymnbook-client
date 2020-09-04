@@ -21,6 +21,7 @@ export class CreateHymnComponent implements OnInit {
   hymn: Hymn = new Hymn();
   languages: Array<Language> = [];
   typeParts: Array<TypePart> = [];
+  title="Create Hymn"
 
   constructor(
     private hymnService: HymnService,
