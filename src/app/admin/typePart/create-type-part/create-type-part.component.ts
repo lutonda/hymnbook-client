@@ -1,3 +1,6 @@
+import { Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { TypePart } from './../../../models/type-part';
 import { TypePartService } from './../../../services/type-part.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,19 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateTypePartComponent implements OnInit {
 
-  data:string;
+  typePart: TypePart = new TypePart();
 
-  constructor(private service: TypePartService) { }
+  constructor(private service: TypePartService, private fb: FormBuilder) { }
 
-  ngOnInit(): void {
-    
-  }
+  form = this.fb.group({
+    description: ['', Validators.required]
+  });
+
+  ngOnInit(): void {}
 
   save() {
-    this.service.create(this.data).subscribe(data=>{
-      let u=data;
+    this.service.create(this.typePart).subscribe(data => {
+      let u = data;
     });
   }
-
-
 }
