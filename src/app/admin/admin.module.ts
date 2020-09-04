@@ -15,6 +15,7 @@ import { SidebarComponent } from './../shared/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
+import { ListTypePartsComponent } from './typePart/list-typeParts/list-type-parts/list-type-parts.component';
 import { FormHymnComponent } from './hymns/form-hymn/form-hymn.component';
 
 
@@ -29,6 +30,7 @@ import { FormHymnComponent } from './hymns/form-hymn/form-hymn.component';
     CreatePartsComponent,
     FormPartsComponent,
     AdminComponent,
+    ListTypePartsComponent,
     FormHymnComponent
 ],
   imports: [

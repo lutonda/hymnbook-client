@@ -1,3 +1,4 @@
+import { ListTypePartsComponent } from './admin/typePart/list-typeParts/list-type-parts/list-type-parts.component';
 import { CreateHymnComponent } from './admin/hymns/create-hymn/create-hymn.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UpdateHymnComponent } from './admin/hymns/update-hymn/update-hymn.component';
@@ -26,7 +27,10 @@ const routes: Routes =[
     { path: 'admin/hymns',                  component: ListHymnComponent },
     { path: 'admin/hymns/create',           component: CreateHymnComponent },
     { path: 'admin/hymns/update/:id',       component: UpdateHymnComponent },
-    { path: 'admin/hymns/:id',              component: HymnsComponent }
+    { path: 'admin/hymns/:id',              component: HymnsComponent },
+
+    { path: 'admin/type-part',               component: ListTypePartsComponent},
+
 ];
 
 @NgModule({
