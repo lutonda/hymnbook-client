@@ -1,3 +1,4 @@
+import { AdminNavbarComponent } from './../shared/admin-navbar/admin-navbar.component';
 import { FooterComponent } from './../shared/footer/footer.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
@@ -31,7 +32,8 @@ import { FormHymnComponent } from './hymns/form-hymn/form-hymn.component';
     FormPartsComponent,
     AdminComponent,
     ListTypePartsComponent,
-    FormHymnComponent
+    FormHymnComponent,
+    AdminNavbarComponent
 ],
   imports: [
     NgbModule,
