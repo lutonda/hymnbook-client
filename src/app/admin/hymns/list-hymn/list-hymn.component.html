@@ -25,10 +25,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">List <span class="sr-only">(current)</span></a>
+              <a class="nav-link" routerLink="/admin/hymns">List <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Crete</a>
+              <a class="nav-link" routerLink="/admin/hymns/update/:id">Create</a>
             </li>
           </ul>
         </div>
@@ -36,6 +36,7 @@
 
       <div class="container-fluid">
         <h1 class="mt-4">List</h1>
+
         <table  class="table table-hover">
           <thead  class="thead-dark">
             <tr>
@@ -54,6 +55,7 @@
             </tr>
           </tbody>
         </table>
+
         <h2 class="title">Who we are?</h2>
         <h5 class="description">According to the National Oceanic and Atmospheric Administration, Ted, Scambos,
           NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice extent in

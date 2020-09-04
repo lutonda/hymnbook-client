@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
   declarations: [
     HymnsComponent,
     HomeComponent,
-    SearchboxComponent
+    SearchboxComponent,
   ],
   exports:[  ]
 })

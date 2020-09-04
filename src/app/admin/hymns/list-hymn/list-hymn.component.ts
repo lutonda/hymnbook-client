@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-hymn.component.css']
 })
 export class ListHymnComponent implements OnInit {
+
   hymns:Array<any>=[];
+  
   constructor(private service:HymnService) { }
 
   ngOnInit(): void {
