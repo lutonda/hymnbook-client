@@ -16,6 +16,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { ListTypePartsComponent } from './typePart/list-typeParts/list-type-parts/list-type-parts.component';
+import { FormHymnComponent } from './hymns/form-hymn/form-hymn.component';
 
 
 
@@ -29,7 +30,8 @@ import { ListTypePartsComponent } from './typePart/list-typeParts/list-type-part
     CreatePartsComponent,
     FormPartsComponent,
     AdminComponent,
-    ListTypePartsComponent
+    ListTypePartsComponent,
+    FormHymnComponent
 ],
   imports: [
     NgbModule,

@@ -1,1 +1,103 @@
-<p>create-hymn works!</p>
+<div class="wrapper">
+  <div class="page-header page-header-small">
+    <div class="page-header-image rellax-header" data-rellax-speed="-18"
+      style="background-image: url('assets/img/bg6.jpg');">
+    </div>
+  </div>
+  <div class="section section-about-us d-flex container" style="margin-top: -40vh;
+  padding: 15px;" id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper" style="width:100%">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">List <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/hymns/create">Crete</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container">
+        <h1 class="mt-4">Update</h1>
+        <h4> <b>{{hymn.title}}</b></h4>
+        <div class="col-md-12 col-lg-8 col-sm-12">
+
+          <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="email" class="form-control form-control-lg" [(ngModel)]="hymn.title" formControlName="title"
+                  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+                <small id="emailHelp" class="form-text formContro text-muted">We'll never share your email with anyone
+                  else.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Number</label>
+                <input type="email" class="form-control form-control-lg" formControlName="number"
+                [(ngModel)]="hymn.number" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+              </div>
+              <div class="form-group" >
+                <label for="exampleInputPassword1">Language</label>
+                <select  [(ngModel)]="hymn.language" name="language" class="form-control form-control-lg"
+                  id="exampleInputEmail1" aria-describedby="emailHelp" [ngModelOptions]="{standalone: true}" [compareWith]="compareFn">
+                  <option *ngFor="let item of languages" [ngValue]="item" >{{item.description}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Author</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+              </div>
+            </div>
+            <hr>
+            <h2>Parts</h2>
+            <blockquote>
+
+              <div class="blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
+
+                <textarea class="form-control" rows="4" cols="80"
+                  placeholder="You can write your text here..."  [(ngModel)]="item.text" name="text_{{i}}" [ngModelOptions]="{standalone: true}"></textarea>
+
+                <div class="form-check form-check-radio  form-check-inline" *ngFor="let typepart of typeParts">
+                  <label class="form-check-label">
+                    <input class="form-check-input" [(ngModel)]="item.typePart._id" name="{{i}}_typePart" type="radio"
+                       value="{{typepart._id}}" [ngModelOptions]="{standalone: true}" >
+                    <span class="form-check-sign"></span>
+                  </label>
+                  {{typepart.description}}
+                </div>
+                <button class="hidden btn btn-sm btn-simple pull-right"><i
+                    class="now-ui-icons arrows-1_refresh-69"></i></button>
+              </div>
+            </blockquote>
+            <button type="button" class="btn btn-default btn-simple" (click)="addPart()">Add new</button>
+            <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- /#page-content-wrapper -->
+
+  </div>
+
+  <app-footer></app-footer>
+</div>

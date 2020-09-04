@@ -1,14 +1,12 @@
 import { Part } from './part';
 
-
 export class TypePart {
 
-    _id: string;
-    description: string;
+  _id: string;
+  description: string;
+  parts: Array<Part> = [];
 
-    parts: Array<Part>;
-
-    constructor(desc?: string) {
-        this.description = desc;
-    }
+  constructor(description?: string) {
+    this.description = description;
+  }
 }

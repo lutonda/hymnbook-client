@@ -2,14 +2,14 @@ import { Hymn } from './hymn';
 
 export class Language {
 
-    _id:string;
-    description:string;
-    code:string;
+  _id: string;
+  description: string;
+  code: string;
 
-    hymns:Array<Hymn>;
+  hymns: Array<Hymn>;
 
-    constructor(desc?:string, code?:string){
-        this.description=desc;
-        this.code=code;
-    }
+  constructor(description?: string, code?: string) {
+    this.description = description;
+    this.code = code;
+  }
 }

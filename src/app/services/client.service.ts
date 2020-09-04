@@ -16,7 +16,7 @@ export class ClientService {
     return this.http.get('http://127.0.0.1:8800/api/v1/' + service + '/' + id);
   }
   create(data: any, service: String): Observable<any> {
-    return this.http.post('http://127.0.0.1:8800/api/v1/' + service, data);
+    return this.http.post('http://127.0.0.1:8800/api/v1/' + service+'/new', data);
   }
   update(id: String, data: any, service: String): Observable<any> {
     return this.http.post('http://127.0.0.1:8800/api/v1/' + service + '/update/' + id, data);
