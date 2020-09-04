@@ -5,17 +5,17 @@ import { Author } from './author';
 
 export class Hymn {
 
-    _id:string;
-    title:string;
-    number: number;
-    author:Author;
-    parts: Array<Part>;
-    language: Language;
-    
-    constructor(title?:string, num?:number){
-        this.title=title;
-        this.number=num;
-    }
+  _id: string;
+  title: string;
+  number: number;
+  author: Author = new Author();
+  parts: Array<Part> = [];
+  language: Language = new Language();
 
-    
+  constructor(title?: string, num?: number) {
+    this.title = title;
+    this.number = num;
+  }
+
+
 }
