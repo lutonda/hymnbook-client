@@ -6,9 +6,6 @@ import { RouterModule } from '@angular/router';
 import { NouisliderModule } from 'ng2-nouislider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormPartsComponent } from './parts/form-parts/form-parts.component';
-import { CreatePartsComponent } from './parts/create-parts/create-parts.component';
-import { UpdatePartsComponent } from './parts/update-parts/update-parts.component';
 import { ListHymnComponent } from './hymns/list-hymn/list-hymn.component';
 import { UpdateHymnComponent } from './hymns/update-hymn/update-hymn.component';
 import { CreateHymnComponent } from './hymns/create-hymn/create-hymn.component';
@@ -34,9 +31,6 @@ import { UpdateLanguageComponent } from './language/update-language/update-langu
     CreateHymnComponent,
     UpdateHymnComponent,
     ListHymnComponent,
-    UpdatePartsComponent,
-    CreatePartsComponent,
-    FormPartsComponent,
     AdminComponent,
     ListTypePartsComponent,
     FormHymnComponent,

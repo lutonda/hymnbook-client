@@ -1,7 +1,8 @@
+import { ToastrService } from 'ngx-toastr';
 import { LanguageService } from './../../../services/language.service';
 import { Language } from './../../../models/language';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -18,6 +19,8 @@ export class CreateLanguageComponent implements OnInit {
 
   constructor(private service: LanguageService, 
               private route:ActivatedRoute, 
+              private toast:ToastrService, 
+              private router:Router, 
               private fb:FormBuilder
             ) { }
 
@@ -31,7 +34,17 @@ export class CreateLanguageComponent implements OnInit {
   }
 
   save(){
-    this.service.createlanguage(this.language).subscribe(data => console.log(data));
+    this.service.createlanguage(this.language).subscribe(data=>
+
+      {if(data.status === 200) {
+        this.toast.success('Success', "It's done!");
+        this.router.navigate(['/admin/languages']);
+      }
+      else
+        this.toast.error('Erro', 'Something was wrong!');
+
+    
+    });
   }
 
 }

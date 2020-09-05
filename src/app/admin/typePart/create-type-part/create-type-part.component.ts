@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { TypePart } from './../../../models/type-part';
@@ -13,7 +15,11 @@ export class CreateTypePartComponent implements OnInit {
 
   typePart: TypePart = new TypePart();
 
-  constructor(private service: TypePartService, private fb: FormBuilder) { }
+  constructor(private service: TypePartService,
+              private fb: FormBuilder,
+              private toast: ToastrService,
+              private router: Router
+              ) { }
 
   form = this.fb.group({
     description: ['', Validators.required]
@@ -22,6 +28,15 @@ export class CreateTypePartComponent implements OnInit {
   ngOnInit(): void {}
 
   save() {
-    this.service.create(this.typePart).subscribe(data=>{ let u = data.data})
+    this.service.create(this.typePart).subscribe(data => {
+      
+      if (data.status === 200) {
+        this.toast.success('Success', "It's done!");
+        this.router.navigate(['/admin/type-parts']);
+      }
+      else
+        this.toast.error('Erro', 'Something was wrong!');
+    
+    });
   }
 }
