@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Part } from 'app/models/part';
 
 import { TypePartService } from './../../../services/type-part.service';
@@ -42,7 +43,8 @@ export class UpdateHymnComponent implements OnInit {
     private languagesService: LanguageService,
     private typePartService: TypePartService,
     private route: ActivatedRoute,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private toastr: ToastrService) { }
 
   @Output('newSubForm') submitFormObjectToParent: EventEmitter<any> = new EventEmitter();
 
@@ -65,6 +67,11 @@ export class UpdateHymnComponent implements OnInit {
   save() {
     this.hymnService.update(this.hymn).subscribe(data => {
       let u = data;
+
+      if (data.status == 200)
+        this.toastr.success('Success', "It's done!");
+      else
+        this.toastr.error('Erro', 'Something was wrong!');
     });
   }
 

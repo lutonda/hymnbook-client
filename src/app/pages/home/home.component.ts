@@ -38,7 +38,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   datas = [];
 
-  constructor(private renderer: Renderer2, config: NgbAccordionConfig, private hymnService: HymnService, private router: Router) {
+  constructor(private renderer: Renderer2,
+    config: NgbAccordionConfig,
+    private hymnService: HymnService,
+    private router: Router) {
     config.closeOthers = true;
     config.type = 'info';
   }

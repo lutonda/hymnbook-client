@@ -10,7 +10,7 @@
       <!-- Page Content -->
       <div id="page-content-wrapper">
 
-        <app-admin-navbar [title]="'Author'" [identity]="'authors'"></app-admin-navbar>
+        <app-admin-navbar [title]="'Authors'" [identity]="'authors'"></app-admin-navbar>
 
         <div class="container">
 
@@ -24,7 +24,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let author of authors let i=index">
+              <tr *ngFor="let author of authors let i=index" routerLink="/admin/author/update/{{author._id}}">
                 <td>{{i+1}}</td>
                 <td>{{author.name}}</td>
                 <td>{{author.description}}</td>
@@ -175,5 +175,4 @@
         </div>
       </div>
     </div>
-    <app-footer></app-footer>
   </div>

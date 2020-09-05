@@ -1,6 +1,5 @@
 import { HomeComponent } from './home/home.component';
 import { SearchboxComponent } from './../components/searchbox/searchbox.component';
-import { NavbarComponent } from './../shared/navbar/navbar.component';
 import { HymnsComponent } from './hymns/hymns.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
