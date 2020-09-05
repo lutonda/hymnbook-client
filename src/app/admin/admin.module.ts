@@ -23,6 +23,9 @@ import { UpdateTypePartComponent } from './typePart/update-type-part/update-type
 import { CreateAuthorComponent } from './author/create-author/create-author.component';
 import { ListAuthorComponent } from './author/list-author/list-author.component';
 import { UpdateAuthorComponent } from './author/update-author/update-author.component';
+import { CreateLanguageComponent } from './language/create-language/create-language.component';
+import { ListLanguagesComponent } from './language/list-languages/list-languages.component';
+import { UpdateLanguageComponent } from './language/update-language/update-language.component';
 
 
 
@@ -43,7 +46,10 @@ import { UpdateAuthorComponent } from './author/update-author/update-author.comp
     UpdateTypePartComponent,
     CreateAuthorComponent,
     ListAuthorComponent,
-    UpdateAuthorComponent
+    UpdateAuthorComponent,
+    CreateLanguageComponent,
+    ListLanguagesComponent,
+    UpdateLanguageComponent
 ],
   imports: [
     NgbModule,

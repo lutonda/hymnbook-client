@@ -30,7 +30,7 @@ export class UpdateTypePartComponent implements OnInit {
   }
 
   save() {
-    this.service.create(this.typePart).subscribe(data => {
+    this.service.update(this.typePart).subscribe(data => {
       let u = data;
     });
   }

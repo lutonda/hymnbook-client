@@ -37,6 +37,7 @@ export class UpdateHymnComponent implements OnInit {
   parts_type: Array<string> = [];
   languages: Array<any> = [];
   typeParts: Array<any> = [];
+
   constructor(
     private hymnService: HymnService,
     private languagesService: LanguageService,
@@ -73,11 +74,13 @@ export class UpdateHymnComponent implements OnInit {
     if (this.hymn.parts.length === 0 || this.hymn.parts[this.hymn.parts.length - 1].text)
       this.hymn.parts.push(new Part())
   }
+
   removePart(index) {
     if (this.hymn.parts.length === 1)
       return;
     this.hymn.parts.splice(index, 1);
   }
+  
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1._id === c2._id : c1 === c2;
   }
