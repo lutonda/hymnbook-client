@@ -29,6 +29,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 
 export class HymnsComponent implements OnInit {
+<<<<<<< HEAD
   @Input() searchData = new EventEmitter();
   hymn = new Hymn();
   order = 0;
@@ -45,9 +46,27 @@ export class HymnsComponent implements OnInit {
   onApplyFilter(item) {
     this.service.getOneHymn(item._id).subscribe(data => {
       this.hymn = data.data
+=======
+
+  @Input() searchData=new EventEmitter();
+
+  hymn= new Hymn();
+  order=0;
+
+  incress(){
+    this.order++;
+  }
+
+  constructor(private service: HymnService, private route:ActivatedRoute) { }
+
+  onApplyFilter(item){
+    this.service.getOneHymn(item._id).subscribe(data=>{
+      this.hymn=data.data
+>>>>>>> 9dab2a5b91a157604da80dee40a39310d14f17b7
     })
     //alert(event._id)
   }
+
   ngOnInit(): void {
 
     let id = this.route.snapshot.paramMap.get('id');
