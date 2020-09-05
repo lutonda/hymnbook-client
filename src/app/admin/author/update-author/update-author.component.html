@@ -1,1 +1,46 @@
-<p>update-author works!</p>
+<div class="wrapper">
+    <div class="page-header page-header-small">
+      <div class="page-header-image rellax-header" data-rellax-speed="-18"
+        style="background-image: url('assets/img/bg6.jpg');">
+      </div>
+    </div>
+    <div class="section section-about-us d-flex container" style="margin-top: -40vh;
+      padding: 15px;" id="wrapper">
+  
+  
+      <!-- Page Content -->
+      <div id="page-content-wrapper" style="width:100%">
+  
+        <app-admin-navbar [title]="'Update author'" [identity]="'author'"></app-admin-navbar>
+  
+        <div class="container">
+          <div class="col-md-12 col-lg-8 col-sm-12">
+            <form [formGroup]="form" (ngSubmit)="save()">
+              <div class="col-md-12">
+                <div class="form-group" >
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="email" class="form-control form-control-lg" formControlName="name" [(ngModel)]="author.name" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Title" >
+                  
+                  <label for="exampleInputEmail1">Description</label>
+                  <input type="email" class="form-control form-control-lg" formControlName="description" [(ngModel)]="author.description" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Title" >
+                  <small id="emailHelp" class="form-text formContro text-muted">We'll never share your email with anyone
+                    else.</small>
+
+                </div>
+              </div>
+              <hr>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <!-- [(ngModel)]="hymn.title" [formGroup]="form" (ngSubmit)="save()"/#page-content-wrapper -->
+  
+    </div>
+  
+    <app-footer></app-footer>
+  </div>
+  

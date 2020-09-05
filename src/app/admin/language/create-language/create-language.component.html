@@ -11,19 +11,19 @@
       <!-- Page Content -->
       <div id="page-content-wrapper" style="width:100%">
   
-        <app-admin-navbar [title]="'Create new author'" [identity]="'author'"></app-admin-navbar>
+        <app-admin-navbar [title]="'Add new language'" [identity]="'languages'"></app-admin-navbar>
   
         <div class="container">
           <div class="col-md-12 col-lg-8 col-sm-12">
             <form [formGroup]="form" (ngSubmit)="save()">
               <div class="col-md-12">
                 <div class="form-group" >
-                  <label for="exampleInputEmail1">Name</label>
-                  <input type="email" class="form-control form-control-lg" formControlName="name" [(ngModel)]="author.name" id="exampleInputEmail1"
+                  <label for="exampleInputEmail1">Description</label>
+                  <input type="email" class="form-control form-control-lg" formControlName="description" [(ngModel)]="language.description" id="exampleInputEmail1"
                     aria-describedby="emailHelp" placeholder="Title" >
                   
-                  <label for="exampleInputEmail1">Description</label>
-                  <input type="email" class="form-control form-control-lg" formControlName="description" [(ngModel)]="author.description" id="exampleInputEmail1"
+                  <label for="exampleInputEmail1">Code</label>
+                  <input type="email" class="form-control form-control-lg" formControlName="code" [(ngModel)]="language.code" id="exampleInputEmail1"
                     aria-describedby="emailHelp" placeholder="Title" >
                   <small id="emailHelp" class="form-text formContro text-muted">We'll never share your email with anyone
                     else.</small>
@@ -31,7 +31,7 @@
                 </div>
               </div>
               <hr>
-              <button type="submit" class="btn btn-primary" >Submit</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
         </div>

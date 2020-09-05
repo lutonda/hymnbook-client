@@ -16,4 +16,10 @@ export class LanguageService {
   getOnelanguage(id:String): Observable<any> {
     return this.http.getOne(id,identity);
   }
+  updatelanguage(data):Observable<any>{
+    return this.http.update(data._id, data, identity);
+  }
+  createlanguage(data):Observable<any>{
+    return this.http.create(data, identity);
+  }
 }

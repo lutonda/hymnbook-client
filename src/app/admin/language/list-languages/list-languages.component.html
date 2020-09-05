@@ -10,7 +10,7 @@
       <!-- Page Content -->
       <div id="page-content-wrapper">
 
-        <app-admin-navbar [title]="'Authors'" [identity]="'authors'"></app-admin-navbar>
+        <app-admin-navbar [title]="'Languages'" [identity]="'languages'"></app-admin-navbar>
 
         <div class="container">
 
@@ -18,17 +18,17 @@
             <thead  class="thead-dark">
               <tr>
                 <th>#</th>
-                <th>Name</th>
                 <th>Description</th>
+                <th>Code</th>
                 <th>Update</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let author of authors let i=index" routerLink="/admin/author/update/{{author._id}}">
+              <tr *ngFor="let language of languages let i=index">
                 <td>{{i+1}}</td>
-                <td>{{author.name}}</td>
-                <td>{{author.description}}</td>
-                <td><a class="btn btn-xs btn-simple btn-round" routerLink="/admin/authors/update/{{author._id}}"><i class="now-ui-icons gestures_tap-01"></i></a></td>
+                <td>{{language.description}}</td>
+                <td>{{language.code}}</td>
+                <td><a class="btn btn-xs btn-simple btn-round" routerLink="/admin/languages/update/{{language._id}}"><i class="now-ui-icons gestures_tap-01"></i></a></td>
               </tr>
             </tbody>
           </table>
@@ -175,4 +175,5 @@
         </div>
       </div>
     </div>
+    <app-footer></app-footer>
   </div>
