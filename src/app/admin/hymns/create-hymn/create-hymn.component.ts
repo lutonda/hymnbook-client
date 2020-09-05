@@ -13,9 +13,27 @@ import { Language } from './../../../models/language';
 import { Hymn } from './../../../models/hymn';
 
 import { ToastrService } from 'ngx-toastr';
+import { trigger, transition, style, animate } from '@angular/animations';
 @Component({
   selector: 'app-create-hymn',
 
+  animations: [
+    trigger('items', [
+      transition(':enter', [
+        style({ transform: 'scale(0.5)', opacity: 0 }),  // initial
+        animate('1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
+          style({ transform: 'scale(1)', opacity: 1 }))  // final
+      ]), transition(':leave', [
+        style({ transform: 'scale(1)', opacity: 1, height: '*' }),
+        animate('1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
+          style({
+            transform: 'scale(0.5)', opacity: 0,
+            height: '0px', margin: '0px'
+          }))
+      ])
+    ],
+    )
+  ],
   templateUrl: './create-hymn.component.html',
   styleUrls: ['./create-hymn.component.css']
 })
@@ -41,10 +59,11 @@ export class CreateHymnComponent implements OnInit {
     title: ['', Validators.required],
     number: [null, [Validators.required, Validators.min(1)]],
     language: [''],
-    parts: this.fb.array([], this.minFormArrayLength(2))
+    parts: this.fb.array([])
   });
 
   ngOnInit(): void {
+    this.addPart()
     this.languagesService.getAlllanguages().subscribe(data => this.languages = data.data)
     this.typePartService.getAllTypePart().subscribe(data => this.typeParts = data.data)
   }
@@ -59,18 +78,20 @@ export class CreateHymnComponent implements OnInit {
   }
 
   addPart() {
-    this.hymn.parts.push(new Part())
+    if (this.hymn.parts.length === 0 || this.hymn.parts[this.hymn.parts.length - 1].text)
+      this.hymn.parts.push(new Part())
+  }
+
+  removePart(index) {
+    if (this.hymn.parts.length === 1){
+      this.toastr.warning('We need at lest one Music part', 'warning');
+      return;
+    }
+
+    this.hymn.parts.splice(index, 1);
   }
 
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1._id === c2._id : c1 === c2;
   }
-
-  minFormArrayLength(min: number) {
-    return (c: AbstractControl): { [key: string]: any } => {
-      if (c.value.length >= min) return null;
-      return { 'minLengthArray': { valid: false } };
-    }
-  }
-
 }

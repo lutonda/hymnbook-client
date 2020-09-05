@@ -10,36 +10,36 @@ import { Observable } from 'rxjs';
 })
 export class SearchboxComponent implements OnInit {
 
-  datas:Array<any>=[];
+  datas: Array<any> = [];
 
   constructor(private hymnService: HymnService, private router: Router) { }
 
-  @Output() searchData=new EventEmitter();
+  @Output() searchData = new EventEmitter();
 
-  filterValue:any={}
+  filterValue: any = {}
 
   ngOnInit(): void {
-    this.hymnService.getAllHymns().subscribe((d)=>{
-        this.datas=d.data;
+    this.hymnService.getAllHymns().subscribe(d => {
+      this.datas = d.data;
     });
   }
 
-  typeahead:string;
-  suggestions: Array<any>=[];
+  typeahead: string;
+  suggestions: Array<any> = [];
 
-  filter(item){
-    this.typeahead='';
-    this.suggestions=[];
+  filter(item) {
+    this.typeahead = '';
+    this.suggestions = [];
     this.searchData.emit(item)
   }
-  
-  selectEvent(item:any){
-    this.searchData=item;
+
+  selectEvent(item: any) {
+    this.searchData = item;
   }
-  
-  suggest(){
+
+  suggest() {
     this.suggestions = this.datas.filter(c => {
-      let final = c.number==this.typeahead || this.typeahead.length>2 && c.title.includes(this.typeahead[0].toUpperCase()+this.typeahead.substring(1).toLowerCase())
+      let final = c.number == this.typeahead || this.typeahead.length > 2 && c.title.toUpperCase().includes(this.typeahead.toUpperCase())
       return final;
     }).slice(0, 10);
 
