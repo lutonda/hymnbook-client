@@ -1,3 +1,8 @@
+import { ListLanguagesComponent } from './admin/language/list-languages/list-languages.component';
+import { UpdateLanguageComponent } from './admin/language/update-language/update-language.component';
+import { CreateLanguageComponent } from './admin/language/create-language/create-language.component';
+import { CreateAuthorComponent } from './admin/author/create-author/create-author.component';
+import { UpdateAuthorComponent } from './admin/author/update-author/update-author.component';
 import { ListAuthorComponent } from './admin/author/list-author/list-author.component';
 import { UpdateTypePartComponent } from './admin/typePart/update-type-part/update-type-part.component';
 import { CreateTypePartComponent } from './admin/typePart/create-type-part/create-type-part.component';
@@ -36,7 +41,15 @@ const routes: Routes =[
     { path: 'admin/type-part/create',       component: CreateTypePartComponent},
     { path: 'admin/type-part/update/:id',   component: UpdateTypePartComponent},
 
-    { path: 'admin/authors',                component: ListAuthorComponent}
+    { path: 'admin/authors',                component: ListAuthorComponent},
+    { path: 'admin/authors/create',         component: CreateAuthorComponent},
+    { path: 'admin/authors/update/:id',     component: UpdateAuthorComponent},
+
+    { path: 'admin/languages',              component: ListLanguagesComponent},
+    { path: 'admin/languages/create',       component: CreateLanguageComponent},
+    { path: 'admin/languages/update/:id',   component: UpdateLanguageComponent}
+
+
 
 ];
 
