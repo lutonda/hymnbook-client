@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Part } from 'app/models/part';
 
 import { TypePartService } from './../../../services/type-part.service';
@@ -43,7 +44,8 @@ export class UpdateHymnComponent implements OnInit {
     private languagesService: LanguageService,
     private typePartService: TypePartService,
     private route: ActivatedRoute,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private toastr: ToastrService) { }
 
   @Output('newSubForm') submitFormObjectToParent: EventEmitter<any> = new EventEmitter();
 
@@ -52,7 +54,7 @@ export class UpdateHymnComponent implements OnInit {
     title: ['', Validators.required],
     number: [null, [Validators.required, Validators.min(1)]],
     language: [''],
-    parts: this.fb.array([], this.minFormArrayLength(2))
+    parts: this.fb.array([])
   });
 
   ngOnInit(): void {
@@ -65,12 +67,14 @@ export class UpdateHymnComponent implements OnInit {
   }
   save() {
     this.hymnService.update(this.hymn).subscribe(data => {
-      let u = data;
+      if (data.status == 200)
+        this.toastr.success('Success', "It's done!");
+      else
+        this.toastr.error('Erro', 'Something was wrong!');
     });
   }
 
   addPart() {
-    alert(this.hymn.parts.length)
     if (this.hymn.parts.length === 0 || this.hymn.parts[this.hymn.parts.length - 1].text)
       this.hymn.parts.push(new Part())
   }
@@ -80,26 +84,8 @@ export class UpdateHymnComponent implements OnInit {
       return;
     this.hymn.parts.splice(index, 1);
   }
-  
+
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1._id === c2._id : c1 === c2;
   }
-  //-------------------
-
-  submit() {
-    let u = 0;
-    let value = this.form.value;
-
-    /* this.submitFormObjectToParent.emit(this.form.value);
-     this.emptyHobbies();
-     this.form.reset();*/
-  }
-
-  minFormArrayLength(min: number) {
-    return (c: AbstractControl): { [key: string]: any } => {
-      if (c.value.length >= min) return null;
-      return { 'minLengthArray': { valid: false } };
-    }
-  }
-
 }

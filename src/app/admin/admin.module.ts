@@ -1,6 +1,5 @@
 import { CreateTypePartComponent } from './typePart/create-type-part/create-type-part.component';
 import { AdminNavbarComponent } from './../shared/admin-navbar/admin-navbar.component';
-import { FooterComponent } from './../shared/footer/footer.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { RouterModule } from '@angular/router';

@@ -43,28 +43,46 @@
               </div>
             </div>
             <hr>
-            <h2>Parts</h2>
+            <div class="row">
+              <div class="col-md-8">
+                <h2>Parts</h2>
+              </div>
+              <div class="col-md-4">
+                <button type="button" class="btn btn-default btn-simple pull-right" (click)="addPart()">
+                  <i class="now-ui-icons ui-1_simple-add"></i>
+                </button>
+              </div>
+            </div>
+
             <blockquote>
+              <div @list class="list-container">
+                <div @items class="box blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
 
-              <div class="blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
+                  <textarea class="form-control" rows="4" cols="80" placeholder="You can write your text here..."
+                    [(ngModel)]="item.text" name="text_{{i}}" [ngModelOptions]="{standalone: true}"></textarea>
 
-                <textarea class="form-control" rows="4" cols="80" placeholder="You can write your text here..."
-                  [(ngModel)]="item.text" name="text_{{i}}" [ngModelOptions]="{standalone: true}"></textarea>
-
-                <div class="form-check form-check-radio  form-check-inline" *ngFor="let typepart of typeParts">
-                  <label class="form-check-label">
-                    <input class="form-check-input" [(ngModel)]="item.typePart._id" name="{{i}}_typePart" type="radio"
-                      value="{{typepart._id}}" [ngModelOptions]="{standalone: true}">
-                    <span class="form-check-sign"></span>
-                  </label>
-                  {{typepart.description}}
+                  <div class="form-check form-check-radio  form-check-inline" *ngFor="let typepart of typeParts">
+                    <label class="form-check-label">
+                      <input class="form-check-input" [(ngModel)]="item.typePart._id" name="{{i}}_typePart" type="radio"
+                        value="{{typepart._id}}" [ngModelOptions]="{standalone: true}">
+                      <span class="form-check-sign"></span>
+                    </label>
+                    {{typepart.description}}
+                  </div>
+                  <button  type="button" class="btn btn-sm btn-simple pull-right" (click)="removePart(i)">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
                 </div>
-                <button class="hidden btn btn-sm btn-simple pull-right"><i
-                    class="now-ui-icons arrows-1_refresh-69"></i></button>
               </div>
             </blockquote>
-            <button type="button" class="btn btn-default btn-simple" (click)="addPart()">Add new</button>
-            <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+            <div class="row">
+              <button type="button" class="btn btn-default btn-simple pull-right" (click)="addPart()">
+                <i class="now-ui-icons ui-1_simple-add"></i>
+              </button>
+            </div>
+            <div class="row">
+              <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+            </div>
           </form>
         </div>
       </div>
@@ -74,5 +92,4 @@
 
   </div>
 
-  <app-footer></app-footer>
 </div>

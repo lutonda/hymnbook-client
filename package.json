@@ -8,11 +8,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+     "postinstall": "ngcc"
   },
   "styles": [
     "styles.scss",
-    "node_modules/ngx-toastr/toastr.css" // try adding '../' if you're using angular cli before 6
+    "node_modules/ngx-toastr/toastr.css"
   ],
   "private": true,
   "dependencies": {
@@ -71,5 +72,8 @@
     "ts-node": "8.6.2",
     "tslint": "6.1.0",
     "typescript": "3.7.5"
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
   }
 }

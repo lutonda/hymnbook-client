@@ -28,13 +28,10 @@ import { FooterComponent } from './shared/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
-
     NavbarComponent,
-
     FooterComponent
   ],
   imports: [
-
     BrowserAnimationsModule,
     NgbModule,
     FormsModule,
@@ -55,7 +52,11 @@ import { FooterComponent } from './shared/footer/footer.component';
     // for Core use:
     LoadingBarModule,
 
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-center',
+
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,9 +2,28 @@ import { Hymn } from './../../models/hymn';
 import { HymnService } from 'app/services/hymn.service';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-hymns',
+
+  animations: [
+    trigger('items', [
+      transition(':enter', [
+        style({ transform: 'scale(0.5)', opacity: 0 }),  // initial
+        animate('1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
+          style({ transform: 'scale(1)', opacity: 1 }))  // final
+      ]), transition(':leave', [
+        style({ transform: 'scale(1)', opacity: 1, height: '*' }),
+        animate('1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
+          style({
+            transform: 'scale(0.5)', opacity: 0,
+            height: '0px', margin: '0px'
+          }))
+      ])
+    ],
+    )
+  ],
   templateUrl: './hymns.component.html',
   styleUrls: ['./hymns.component.css']
 })

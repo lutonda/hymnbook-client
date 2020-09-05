@@ -28,8 +28,17 @@
 
 <nav class="navbar navbar-expand-lg bg-white" style="box-shadow: none;">
   <div class="container">
-    <div class="navbar-translate">
-      <h1 class="mt-4">{{title}}</h1>
+    <div class="navbar-translate row">
+      <div class="col-md-2">
+        <a class="nav-link active" routerLink="/admin/{{identity}}">
+          <i class="now-ui-icons arrows-1_minimal-left"></i>
+        </a>
+      </div>
+      <div class="col-md-10">
+        <h1 class="mt-4">{{title}}</h1>
+      </div>
+
+
     </div>
     <div class=" pull-right" id="navigation">
       <ul class="navbar-nav">
@@ -38,17 +47,8 @@
             <i class="now-ui-icons ui-1_simple-add"></i>
           </a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/admin/{{identity}}">
-            <i class="now-ui-icons">
-              <span class="button-bar"></span>
-              <span class="button-bar"></span>
-              <span class="button-bar"></span>
-            </i>
-          </a>
-        </li>
       </ul>
     </div>
   </div>
 </nav>
-<hr/>
+<hr />
