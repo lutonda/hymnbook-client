@@ -23,13 +23,12 @@ import { CommonModule } from '@angular/common';
       RouterModule,
       JwBootstrapSwitchNg2Module,
       AutocompleteLibModule,
-
-    NgxAudioPlayerModule
+      NgxAudioPlayerModule
     ],
   declarations: [
     HymnsComponent,
     HomeComponent,
-    SearchboxComponent,
+    SearchboxComponent
   ],
   exports:[  ]
 })

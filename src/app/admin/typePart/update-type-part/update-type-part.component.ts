@@ -1,4 +1,5 @@
-import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { TypePart } from './../../../models/type-part';
@@ -17,7 +18,9 @@ export class UpdateTypePartComponent implements OnInit {
   constructor(
     private service: TypePartService,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toast: ToastrService,
+    private router: Router
   ) { }
 
   form = this.fb.group({
@@ -31,7 +34,14 @@ export class UpdateTypePartComponent implements OnInit {
 
   save() {
     this.service.update(this.typePart).subscribe(data => {
-      let u = data;
+      
+      if (data.status === 200) {
+        this.toast.success('Success', "It's done!");
+        this.router.navigate(['/admin/type-parts']);
+      }
+      else
+        this.toast.error('Erro', 'Something was wrong!');
+    
     });
   }
 }
