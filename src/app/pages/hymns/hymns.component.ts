@@ -29,24 +29,30 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 
 export class HymnsComponent implements OnInit {
-  @Input() searchData=new EventEmitter();
-  hymn= new Hymn();
-  order=0;
-  incress(){
+  @Input() searchData = new EventEmitter();
+  hymn = new Hymn();
+  order = 0;
+  incress() {
     this.order++;
   }
-  constructor(private service: HymnService, private route:ActivatedRoute) { }
-  onApplyFilter(item){
-    this.service.getOneHymn(item._id).subscribe(data=>{
-      this.hymn=data.data
+  // Material Style Basic Audio Player Title and Audio URL
+  msbapTitle = 'Audio Title';
+  msbapAudioUrl = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+
+  msbapDisplayTitle = false;
+  msbapDisplayVolumeControls = true;
+  constructor(private service: HymnService, private route: ActivatedRoute) { }
+  onApplyFilter(item) {
+    this.service.getOneHymn(item._id).subscribe(data => {
+      this.hymn = data.data
     })
     //alert(event._id)
   }
   ngOnInit(): void {
 
-    let id=this.route.snapshot.paramMap.get('id');
-    this.service.getOneHymn(id).subscribe(data=>{
-      this.hymn=data.data
+    let id = this.route.snapshot.paramMap.get('id');
+    this.service.getOneHymn(id).subscribe(data => {
+      this.hymn = data.data
     })
   }
 
