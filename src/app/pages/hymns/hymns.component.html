@@ -45,6 +45,10 @@
         min-height: 400px;
         box-shadow: 0 0 5px rgba(0,0,0,.4);
         border-radius: 10px;">
+          <mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted"
+            (trackEnded)="onEnded($event)" [displayTitle]="msbapDisplayTitle"
+            [displayVolumeControls]="msbapDisplayVolumeControls"></mat-basic-audio-player>
+          <br>
           <div @list class="list-container">
             <blockquote @items *ngFor="let part of hymn.parts">
               <button *ngIf="part.typePart.description=='Estrofe'" type="button"

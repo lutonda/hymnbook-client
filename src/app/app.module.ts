@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxAudioPlayerModule, MatBasicAudioPlayerComponent } from 'ngx-audio-player';
 // for HttpClient import:
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
@@ -51,6 +52,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 
     // for Core use:
     LoadingBarModule,
+    NgxAudioPlayerModule,
 
     ToastrModule.forRoot({
       timeOut: 10000,

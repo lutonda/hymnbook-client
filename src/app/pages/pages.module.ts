@@ -1,3 +1,4 @@
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { HomeComponent } from './home/home.component';
 import { SearchboxComponent } from './../components/searchbox/searchbox.component';
 import { HymnsComponent } from './hymns/hymns.component';
@@ -21,7 +22,9 @@ import { CommonModule } from '@angular/common';
       NouisliderModule,
       RouterModule,
       JwBootstrapSwitchNg2Module,
-      AutocompleteLibModule
+      AutocompleteLibModule,
+
+    NgxAudioPlayerModule
     ],
   declarations: [
     HymnsComponent,
