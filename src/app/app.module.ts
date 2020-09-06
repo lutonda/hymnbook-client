@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './shared/footer/footer.component';
 import { DragAndDropDirective } from './directive/drag-and-drop.directive';
 
+import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,8 @@ import { DragAndDropDirective } from './directive/drag-and-drop.directive';
     ReactiveFormsModule,
     PagesModule,
     AdminModule,
+
+    SocialLoginModule,
     // for HttpClient use:
     LoadingBarHttpClientModule,
 
@@ -63,7 +66,19 @@ import { DragAndDropDirective } from './directive/drag-and-drop.directive';
 
     }),
   ],
-  providers: [],
+  providers: [{
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('653863311918612'),
+          }
+          
+        ],
+      } as SocialAuthServiceConfig,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
