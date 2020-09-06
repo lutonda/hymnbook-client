@@ -537,8 +537,8 @@ div#wrapper.d-flex.container {
   padding: 15px;
   min-height: 700px;
 }
-a.nav-link.active {
-  margin: 35px 0;
+a.active {
+  margin: 25px 0;
 }
 
 table.table tr td:last-child {

@@ -1,3 +1,5 @@
+import { ProgressBarComponent } from './../components/progress-bar/progress-bar.component';
+import { ComponentsModule } from './../components/components.module';
 import { CreateTypePartComponent } from './typePart/create-type-part/create-type-part.component';
 import { AdminNavbarComponent } from './../shared/admin-navbar/admin-navbar.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
@@ -42,7 +44,8 @@ import { UpdateLanguageComponent } from './language/update-language/update-langu
     UpdateAuthorComponent,
     CreateLanguageComponent,
     ListLanguagesComponent,
-    UpdateLanguageComponent
+    UpdateLanguageComponent,
+    ProgressBarComponent,
 ],
   imports: [
     NgbModule,

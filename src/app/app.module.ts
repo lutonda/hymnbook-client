@@ -1,3 +1,4 @@
+
 import { AdminModule } from './admin/admin.module';
 import { PagesModule } from './pages/pages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
@@ -24,13 +25,15 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './shared/footer/footer.component';
+import { DragAndDropDirective } from './directive/drag-and-drop.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DragAndDropDirective
   ],
   imports: [
     BrowserAnimationsModule,
