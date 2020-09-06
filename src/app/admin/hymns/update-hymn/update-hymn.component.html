@@ -14,82 +14,116 @@
       <!-- /#Header nav bar-->
 
       <div class="container">
-        <div class="col-md-12 col-lg-8 col-sm-12">
 
-          <form [formGroup]="form" (ngSubmit)="submit()">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Title</label>
-                <input type="email" class="form-control form-control-lg" [(ngModel)]="hymn.title"
-                  formControlName="title" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
-                <small id="emailHelp" class="form-text formContro text-muted">We'll never share your email with anyone
-                  else.</small>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <div class="row">
+            <div class="col-md-12 col-lg-8 col-sm-12">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Title</label>
+                  <input type="email" class="form-control form-control-lg" [(ngModel)]="hymn.title"
+                    formControlName="title" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+                  <small id="emailHelp" class="form-text formContro text-muted">We'll never share your email with anyone
+                    else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Number</label>
+                  <input type="email" class="form-control form-control-lg" formControlName="number"
+                    [(ngModel)]="hymn.number" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                </div>
+                <div class="form-group" ngModelGroup="hymn" #nameCtrl="ngModelGroup">
+                  <label for="exampleInputPassword1">Language</label>
+                  <select [(ngModel)]="hymn.language" name="language" class="form-control form-control-lg"
+                    id="exampleInputEmail1" aria-describedby="emailHelp" [ngModelOptions]="{standalone: true}"
+                    [compareWith]="compareFn">
+                    <option *ngFor="let item of languages" [ngValue]="item">{{item.description}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Author</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                </div>
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Number</label>
-                <input type="email" class="form-control form-control-lg" formControlName="number"
-                  [(ngModel)]="hymn.number" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter email">
-              </div>
-              <div class="form-group" ngModelGroup="hymn" #nameCtrl="ngModelGroup">
-                <label for="exampleInputPassword1">Language</label>
-                <select [(ngModel)]="hymn.language" name="language" class="form-control form-control-lg"
-                  id="exampleInputEmail1" aria-describedby="emailHelp" [ngModelOptions]="{standalone: true}"
-                  [compareWith]="compareFn">
-                  <option *ngFor="let item of languages" [ngValue]="item">{{item.description}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Author</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter email">
-              </div>
-            </div>
 
-            <hr>
-            <div class="row">
-              <div class="col-md-8">
-                <h2>Parts</h2>
+              <hr>
+              <div class="row">
+                <div class="col-md-8">
+                  <h2>Parts</h2>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="btn btn-default btn-simple pull-right" (click)="addPart()">
+                    <i class="now-ui-icons ui-1_simple-add"></i>
+                  </button>
+                </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-12">
+                <blockquote>
+                  <div @list class="list-container">
+                    <div @items class="box blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
+
+                      <textarea class="form-control" rows="4" cols="80" placeholder="You can write your text here..."
+                        [(ngModel)]="item.text" name="text_{{i}}" [ngModelOptions]="{standalone: true}"></textarea>
+
+                      <div class="form-check form-check-radio  form-check-inline" *ngFor="let typepart of typeParts">
+                        <label class="form-check-label">
+                          <input class="form-check-input" [(ngModel)]="item.typePart._id" name="{{i}}_typePart"
+                            type="radio" value="{{typepart._id}}" [ngModelOptions]="{standalone: true}">
+                          <span class="form-check-sign"></span>
+                        </label>
+                        {{typepart.description}}
+                      </div>
+                      <button type="button" class="btn btn-sm btn-simple pull-right" (click)="removePart(i)">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                      </button>
+                    </div>
+                  </div>
+                </blockquote>
+              </div>
+              <div class="row">
                 <button type="button" class="btn btn-default btn-simple pull-right" (click)="addPart()">
                   <i class="now-ui-icons ui-1_simple-add"></i>
                 </button>
               </div>
             </div>
-
-            <blockquote>
-              <div @list class="list-container">
-                <div @items class="box blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
-
-                  <textarea class="form-control" rows="4" cols="80" placeholder="You can write your text here..."
-                    [(ngModel)]="item.text" name="text_{{i}}" [ngModelOptions]="{standalone: true}"></textarea>
-
-                  <div class="form-check form-check-radio  form-check-inline" *ngFor="let typepart of typeParts">
-                    <label class="form-check-label">
-                      <input class="form-check-input" [(ngModel)]="item.typePart._id" name="{{i}}_typePart" type="radio"
-                        value="{{typepart._id}}" [ngModelOptions]="{standalone: true}">
-                      <span class="form-check-sign"></span>
-                    </label>
-                    {{typepart.description}}
+            <div class="col-md-12 col-lg-4 col-sm-12">
+              <div class="uploader" appDragAndDrop (fileDropped)="onFileDropped($event)">
+                <input type="file" #fileDropRef id="fileDropRef" multiple
+                  (change)="fileBrowseHandler($event.target.files)" />
+                <i class="now-ui-icons arrows-1_cloud-upload-94" style="font-size:94px !important"></i>
+                <h3>Drag and drop file here</h3>
+                <h3>or</h3>
+                <label for="fileDropRef" class="btn">Browse for file</label>
+              </div>
+              <div class="files-list">
+                <div class="single-file" *ngFor="let file of files; let i = index">
+                  <div class="file-icon" style="width: 50px">
+                    <i class="now-ui-icons media-2_note-03"
+                      style="font-size: 32px;background: #eee;padding: 15px 5px; margin:3px"></i>
                   </div>
-                  <button  type="button" class="btn btn-sm btn-simple pull-right" (click)="removePart(i)">
-                    <i class="now-ui-icons ui-1_simple-remove"></i>
-                  </button>
+                  <div class="info">
+                    <h4 class="name">
+                      {{ file?.name }}
+                    </h4>
+                    <p class="size">
+                      {{ formatBytes(file?.size) }}
+                    </p>
+                    <app-progress-bar [progress]="file?.progress"></app-progress-bar>
+                  </div>
+
+                  <div class="delete" (click)="deleteFile(i)">
+                    <i _ngcontent-ghq-c244="" class="now-ui-icons ui-1_simple-remove ng-tns-c244-0"></i>
+                  </div>
                 </div>
               </div>
-            </blockquote>
-            <div class="row">
-              <button type="button" class="btn btn-default btn-simple pull-right" (click)="addPart()">
-                <i class="now-ui-icons ui-1_simple-add"></i>
-              </button>
-            </div>
-            <div class="row">
-              <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
             </div>
 
-          </form>
-        </div>
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
 

@@ -14,6 +14,7 @@ import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NgbdModalBasic } from './modal/modal.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 @NgModule({
     imports: [
       FormsModule,
