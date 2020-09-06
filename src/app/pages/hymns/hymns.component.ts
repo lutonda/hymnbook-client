@@ -46,8 +46,9 @@ export class HymnsComponent implements OnInit {
     this.service.getOneHymn(item._id).subscribe(data => {
       this.hymn = data.data
     })
-    //alert(event._id)
   }
+
+  
 
   ngOnInit(): void {
 

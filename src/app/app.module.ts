@@ -25,6 +25,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './shared/footer/footer.component';
 
+import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     ReactiveFormsModule,
     PagesModule,
     AdminModule,
+
+    SocialLoginModule,
     // for HttpClient use:
     LoadingBarHttpClientModule,
 
@@ -60,7 +63,19 @@ import { FooterComponent } from './shared/footer/footer.component';
 
     }),
   ],
-  providers: [],
+  providers: [{
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('653863311918612'),
+          }
+          
+        ],
+      } as SocialAuthServiceConfig,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
