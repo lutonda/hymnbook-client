@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SocialAuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
 
+import {AuthenficationService} from 'app/services/authenfication.service';
+
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -13,16 +15,17 @@ import { SocialAuthService, FacebookLoginProvider, SocialUser } from 'angularx-s
 export class NavbarComponent implements OnInit {
 
     user: SocialUser;
-    loggedIn: Boolean;
+    loggedIn: Boolean=false;
 
     private toggleButton: any;
-    private sidebarVisible: boolean;
+    private sidebarVisible: boolean=false;
 
     constructor(
         public location: Location, 
         private element : ElementRef,
         private authService: SocialAuthService,
         private router: Router, 
+        private authentification: AuthenficationService, 
         private toastr: ToastrService
         
         ) {
@@ -34,43 +37,25 @@ export class NavbarComponent implements OnInit {
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
 
         this.user = new SocialUser();
-
         
-        if(localStorage.length!=0){
+        
+        if(this.authentification.active()){
+
             this.loggedIn=true;
-            this.user.idToken=localStorage.getItem('token');
-            this.user.name=localStorage.getItem('name');
-            this.user.photoUrl=localStorage.getItem('photo');
+            this.user=this.authentification.userDesc();
         }
          else
             this.loggedIn=false;
+
     }
 
     signInFacebook():void{
-        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {   
-  
-          if (data) {
-  
-            this.toastr.success('Success', "It's done!");
-  
-            this.user=data;
-  
-            console.log(this.user); 
-            
-            localStorage.setItem('token', this.user.authToken);
-            localStorage.setItem('photo', this.user.photoUrl);
-            localStorage.setItem('name', this.user.name);
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {this.loggedIn=true;this.user = this.authentification.sig(data);});
+    }
 
-  
-            this.loggedIn=true;
-  
-          }
-          else{
-            this.toastr.error('Erro', 'Something was wrong!');
-            this.loggedIn=false;
-          }
-    
-        })
+    logOut():void{
+        this.loggedIn=this.authentification.log();
+        this.toastr.info('Disconnected');
     }
 
     sidebarOpen() {

@@ -52,19 +52,20 @@
 
                 <div *ngIf="loggedIn===false;">
                   <a class="nav-link btn btn-dark" rel="tooltip" title="Stay Connected" data-placement="bottom" (click)="signInFacebook()">
-                    <span>Sign</span>
+                    <i class="SigIn fab fa-facebook-square" style="background: #2222ff;"></i> SigIn
+                    
                   </a>
                 </div>
                 
                 <div *ngIf="loggedIn===true;">
-                  <a class="nav-link " rel="tooltip" title="Connected" data-placement="bottom" style="padding:3px;">
-                      <div col-md-1><img src="{{user.photoUrl}}" style="width: 40px; margin:0; padding: 3px; border-radius: 50%;"/>{{user.name}}</div>                      
+                  <a class="nav-link logout" rel="tooltip" title="Connected" data-placement="bottom" style="padding:3px;">
+                    <div><img src="{{user.photoUrl}}" style="width: 40px; margin:0; padding: 3px; border-radius: 50%;"/>{{user.name}} <span class="badge badge-primary" (click)="logOut()">LogOut</span></div>                      
                   </a>
-                </div>
-                
-                
-                                   
+                  
+                </div>             
                 </li>
+
+                
             </ul>
         </div>
     </div>
