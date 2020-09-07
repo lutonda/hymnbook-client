@@ -29,6 +29,7 @@ import { DragAndDropDirective } from './directive/drag-and-drop.directive';
 
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 
+
 @NgModule({
   declarations: [
     AppComponent,
