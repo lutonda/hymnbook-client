@@ -11,7 +11,7 @@ export class Hymn {
   author: Author;//new Author();
   parts: Array<Part> = [];
   language: Language = new Language();
-  files: Array<any> = [];
+  files: Array<any> = [{}];
   constructor(title?: string, num?: number) {
     this.title = title;
     this.number = num;
