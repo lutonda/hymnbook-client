@@ -27,4 +27,6 @@ export class HymnService {
   create(data): Observable<any>{
     return this.http.create(data,identity)
   }
+
+  serverAddress=():string => this.http.serverAddress;
 }

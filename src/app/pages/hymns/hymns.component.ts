@@ -45,7 +45,7 @@ export class HymnsComponent implements OnInit {
   onApplyFilter(item) {
     this.service.getOneHymn(item._id).subscribe(data => {
       this.hymn = data.data;
-      this.msbapAudioUrl = 'http://127.0.0.1:8800/api/v1/files/'+this.hymn.files[0].identity;
+      this.msbapAudioUrl = `http://${this.service.serverAddress()}/api/v1/files/${this.hymn.files[0].identity}`;
     })
   }
 
@@ -54,7 +54,7 @@ export class HymnsComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     this.service.getOneHymn(id).subscribe(data => {
       this.hymn = data.data
-      this.msbapAudioUrl = 'http://127.0.0.1:8800/api/v1/files/'+this.hymn.files[0].identity;
+      this.msbapAudioUrl = `http://${this.service.serverAddress()}/api/v1/files/${this.hymn.files[0].identity}`;
     })
   }
 
