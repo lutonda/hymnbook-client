@@ -23,4 +23,8 @@ export class UserService {
 
     return this.http.post('http://127.0.0.1:8800/api/v1/users/new', u);
   }
+
+  getAll():Observable<any>{
+    return this.http.get('http://127.0.0.1:8800/api/v1/users')
+  }
 }

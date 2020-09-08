@@ -28,11 +28,8 @@ export class AuthenficationService{
     localStorage.setItem('name', data.name);
     localStorage.setItem('photoUrl', data.photoUrl);
     
-    let d = userService.create(data).subscribe(data => {
-      if (data.status == 200)
-        console.log('Success', data.message);
-      else
-        console.log('Erro', data.data);
+    userService.create(data).subscribe(data => {
+     let d=data.data
     })
 
     return data;

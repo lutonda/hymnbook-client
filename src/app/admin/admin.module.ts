@@ -24,6 +24,7 @@ import { UpdateAuthorComponent } from './author/update-author/update-author.comp
 import { CreateLanguageComponent } from './language/create-language/create-language.component';
 import { ListLanguagesComponent } from './language/list-languages/list-languages.component';
 import { UpdateLanguageComponent } from './language/update-language/update-language.component';
+import { UserListComponent } from './user/user-list/user-list.component';
 
 
 
@@ -46,6 +47,7 @@ import { UpdateLanguageComponent } from './language/update-language/update-langu
     ListLanguagesComponent,
     UpdateLanguageComponent,
     ProgressBarComponent,
+    UserListComponent,
 ],
   imports: [
     NgbModule,

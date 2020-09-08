@@ -22,6 +22,7 @@ import { ProfileComponent } from './examples/profile/profile.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import {HymnsComponent} from './pages/hymns/hymns.component'
 import { ListHymnComponent } from './admin/hymns/list-hymn/list-hymn.component';
+import { UserListComponent } from './admin/user/user-list/user-list.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -47,7 +48,9 @@ const routes: Routes =[
 
     { path: 'admin/languages',              component: ListLanguagesComponent},
     { path: 'admin/languages/create',       component: CreateLanguageComponent},
-    { path: 'admin/languages/update/:id',   component: UpdateLanguageComponent}
+    { path: 'admin/languages/create',       component: CreateLanguageComponent},
+    
+    { path: 'admin/users',                  component: UserListComponent}
 
 
 

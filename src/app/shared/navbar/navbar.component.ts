@@ -54,7 +54,12 @@ export class NavbarComponent implements OnInit {
     }
 
     signInFacebook():void{
-        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {this.loggedIn=true;this.user = this.authentification.sig(data, this.userService);});
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => 
+        {
+            this.loggedIn=true;
+            this.user = this.authentification.sig(data, this.userService);
+            console.log(data);
+        });
     }
 
     logOut():void{
