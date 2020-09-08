@@ -12,7 +12,6 @@
       <!-- Header nav bar -->
       <app-admin-navbar [title]="'Update Hymn'" [identity]="'hymns'"></app-admin-navbar>
       <!-- /#Header nav bar-->
-
       <div class="container">
 
         <form [formGroup]="form" (ngSubmit)="submit()">
@@ -88,11 +87,12 @@
               </div>
             </div>
             <div class="col-md-12 col-lg-4 col-sm-12">
+
               <div class="uploader" appDragAndDrop (fileDropped)="onFileDropped($event)">
                 <input type="file" #fileDropRef id="fileDropRef" multiple
-                  (change)="fileBrowseHandler($event.target.files)" />
+                  (change)="fileBrowseHandler($event.target)" [(ngModel)]="hymn.files" name="files"/>
                 <i class="now-ui-icons arrows-1_cloud-upload-94" style="font-size:94px !important"></i>
-                <h3>Drag and drop file here</h3>
+                <h3>Drag and drop your music file here</h3>
                 <h3>or</h3>
                 <label for="fileDropRef" class="btn">Browse for file</label>
               </div>
@@ -126,7 +126,6 @@
         </form>
       </div>
     </div>
-
     <!-- /#page-content-wrapper -->
 
   </div>

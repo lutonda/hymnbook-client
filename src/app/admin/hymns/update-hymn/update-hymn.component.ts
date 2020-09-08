@@ -55,7 +55,7 @@ export class UpdateHymnComponent implements OnInit {
     title: ['', Validators.required],
     number: [null, [Validators.required, Validators.min(1)]],
     language: [''],
-
+    files: [''],
     parts: this.fb.array([])
   });
 
@@ -73,7 +73,6 @@ export class UpdateHymnComponent implements OnInit {
         this.toastr.success('Success', "It's done!");
         this.router.navigate(['/admin/hymns']);
       }
-
       else
         this.toastr.error('Erro', 'Something was wrong!');
     });
@@ -108,7 +107,8 @@ export class UpdateHymnComponent implements OnInit {
    * handle file from browsing
    */
   fileBrowseHandler(files) {
-    this.prepareFilesList(files);
+    this.onFileSelect(files)
+    this.prepareFilesList(files.files);
   }
 
   /**
@@ -117,6 +117,7 @@ export class UpdateHymnComponent implements OnInit {
    */
   deleteFile(index: number) {
     this.files.splice(index, 1);
+    this.hymn.files.splice(index, 1);
   }
 
   /**
@@ -150,7 +151,17 @@ export class UpdateHymnComponent implements OnInit {
     }
     this.uploadFilesSimulator(0);
   }
-
+  onFileSelect(input) {
+    for(let i=0;i<input.files.length;i++){
+      var reader = new FileReader();
+      reader.onload = (e: any) => {
+        let data=e.target.result;
+        console.log(data)
+        this.hymn.files.push({data:data,title:this.hymn.title,type:data.split(';base64,')[0].split(':')[1]});
+      }
+      reader.readAsDataURL(input.files[i]);
+    }
+  }
   /**
    * format bytes
    * @param bytes (File size in bytes)

@@ -37,24 +37,24 @@ export class HymnsComponent implements OnInit {
   }
   // Material Style Basic Audio Player Title and Audio URL
   msbapTitle = 'Audio Title';
-  msbapAudioUrl = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+  msbapAudioUrl = null;
 
   msbapDisplayTitle = false;
   msbapDisplayVolumeControls = true;
   constructor(private service: HymnService, private route: ActivatedRoute) { }
   onApplyFilter(item) {
     this.service.getOneHymn(item._id).subscribe(data => {
-      this.hymn = data.data
+      this.hymn = data.data;
+      this.msbapAudioUrl = `http://${this.service.serverAddress()}/api/v1/files/${this.hymn.files[0].identity}`;
     })
   }
-
-  
 
   ngOnInit(): void {
 
     let id = this.route.snapshot.paramMap.get('id');
     this.service.getOneHymn(id).subscribe(data => {
       this.hymn = data.data
+      this.msbapAudioUrl = `http://${this.service.serverAddress()}/api/v1/files/${this.hymn.files[0].identity}`;
     })
   }
 

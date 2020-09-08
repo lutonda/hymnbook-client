@@ -6,19 +6,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ClientService {
-
+  serverAddress='127.0.0.1:8800';
   constructor(private http: HttpClient) { }
 
   getAll(service: String): Observable<any> {
-    return this.http.get('http://127.0.0.1:8800/api/v1/' + service);
+    return this.http.get(`http://${this.serverAddress}/api/v1/${service}`);
   }
   getOne(id: String, service: String): Observable<any> {
-    return this.http.get('http://127.0.0.1:8800/api/v1/' + service + '/' + id);
+    return this.http.get(`http://${this.serverAddress}/api/v1/${service}/` + id);
   }
   create(data: any, service: String): Observable<any> {
-    return this.http.post('http://127.0.0.1:8800/api/v1/' + service+'/new', data);
+    return this.http.post(`http://${this.serverAddress}/api/v1/${service}/new`, data);
   }
   update(id: String, data: any, service: String): Observable<any> {
-    return this.http.post('http://127.0.0.1:8800/api/v1/' + service + '/update/' + id, data);
+    return this.http.post(`http://${this.serverAddress}/api/v1/${service}/update/` + id, data);
   }
 }
