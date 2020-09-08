@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { UserService } from './../../services/user.service';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
@@ -26,7 +28,9 @@ export class NavbarComponent implements OnInit {
         private authService: SocialAuthService,
         private router: Router, 
         private authentification: AuthenficationService, 
-        private toastr: ToastrService
+        private userService: UserService,
+        private toastr: ToastrService,
+        private http: HttpClient
         
         ) {
         this.sidebarVisible = false;
@@ -50,11 +54,11 @@ export class NavbarComponent implements OnInit {
     }
 
     signInFacebook():void{
-        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {this.loggedIn=true;this.user = this.authentification.sig(data);});
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {this.loggedIn=true;this.user = this.authentification.sig(data, this.userService);});
     }
 
     logOut():void{
-        this.loggedIn=this.authentification.log();
+        this.loggedIn=this.authentification.logOut();
         this.toastr.info('Disconnected');
     }
 
