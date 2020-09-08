@@ -1,3 +1,4 @@
+import { ClientService } from './client.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -12,19 +13,19 @@ let identity = 'users';
 export class UserService {
 
 
-  constructor(private http: HttpClient){
+  constructor(private http: ClientService){
   }
 
   create(data: any):Observable<any>{
 
-    let u = JSON.parse('{"name": "'+data.name+'", "email": "' +data.email+'"}');
+    let d = JSON.parse('{"name": "'+data.name+'", "email": "' +data.email+'"}');
 
-    alert(u.email);
+    alert(d.email);
 
-    return this.http.post('http://127.0.0.1:8800/api/v1/users/new', u);
+    return this.http.create(d, identity);
   }
 
   getAll():Observable<any>{
-    return this.http.get('http://127.0.0.1:8800/api/v1/users')
+    return this.http.getAll(identity);
   }
 }
