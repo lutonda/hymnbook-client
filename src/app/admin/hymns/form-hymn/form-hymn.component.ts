@@ -1,17 +1,26 @@
+import { Observable } from 'rxjs';
+import { LanguageService } from './../../../services/language.service';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-form-hymn',
   templateUrl: './form-hymn.component.html',
   styleUrls: ['./form-hymn.component.css']
 })
+
+
 export class FormHymnComponent implements OnInit {
 
   @Output() submit=new EventEmitter();
   @Input() hymn:any={parts:[]};
+  
+  langService:LanguageService;
+
+  languages:Observable<any>;
 
   form = this.fb.group({
     title: ['', Validators.required],
@@ -19,11 +28,13 @@ export class FormHymnComponent implements OnInit {
     language: [''],
     parts: this.fb.array(this.hymn.parts, this.minFormArrayLength(2))
   });
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit():void {
-    
-   }
+    this.languages = this.langService.getAlllanguages();
+  }
+  
   save(){
     this.submit.emit(this.hymn)
   }
