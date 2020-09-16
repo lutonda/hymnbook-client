@@ -68,6 +68,7 @@ export class UpdateHymnComponent implements OnInit {
     this.typePartService.getAllTypePart().subscribe(data => this.typeParts = data.data)
   }
   save() {
+    this.hymn.files=this.hymn.files||[]
     this.hymnService.update(this.hymn).subscribe(data => {
       if (data.status == 200) {
         this.toastr.success('Success', "It's done!");

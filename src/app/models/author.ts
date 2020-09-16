@@ -4,12 +4,12 @@ import { Hymn } from './hymn';
 export class Author {
 
   _id: string;
-  nome: string;
+  name: string;
   description: string;
   hymns: Array<Hymn>;
 
-  constructor(nome?: string, description?: string) {
-    this.nome = nome;
+  constructor(name?: string, description?: string) {
+    this.name = name;
     this.description = description;
   }
 }
