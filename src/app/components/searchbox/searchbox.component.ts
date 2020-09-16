@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-searchbox',
   templateUrl: './searchbox.component.html',
-  styleUrls: ['./searchbox.component.css']
+  styleUrls: ['./searchbox.component.scss']
 })
 export class SearchboxComponent implements OnInit {
 

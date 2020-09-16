@@ -8,6 +8,20 @@ div.suggestions{
   width: 100%;
   z-index: 999;
   box-shadow: 0 0 5px;
-  margin-top: 100px;
+  left:0;
+
+  ul.list-group{
+      width: 100%;
+
+      li.list-group-item{
+        cursor: pointer;
+        padding: 10px;
+        border-bottom: solid 1px #eee;
+        text-align: left;
+      }
+      li.list-group-item:hover{
+        background:#EEE;
+      }
+  }
 }
 .container{padding: 10px;}

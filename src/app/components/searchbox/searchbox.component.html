@@ -1,14 +1,17 @@
 <div class="row align-items-center search-main-session">
-    <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
-      <input type="text" [(ngModel)]="typeahead" placeholder="Type ahead !" (input)="suggest()"
-        class="form-control" placeholder="Find a Hymn by title or number" (focus)="focus1=true" style="height: 40px; padding: 10px;
+  <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+    <input type="text" [(ngModel)]="typeahead" placeholder="Type ahead !" (input)="suggest()" class="form-control"
+      placeholder="Find a Hymn by title or number" (focus)="focus1=true" style="height: 40px; padding: 10px;
             font-size: 20px;" (blur)="focus1=false">
-      <div class="input-group-append" style="height: 40px;">
-        <span class="input-group-text"><i class="now-ui-icons ui-1_zoom-bold" style="padding-left: 5px;"></i></span>
-      </div>
+    <div class="input-group-append" style="height: 40px;">
+      <span class="input-group-text"><i class="now-ui-icons ui-1_zoom-bold" style="padding-left: 5px;"></i></span>
     </div>
+  </div>
 
-    <div class="suggestions" *ngIf="suggestions.length">
-    <div *ngFor="let s of suggestions" (click)="filter(s)">{{s.number}} - {{s.title}}</div>
-    </div>
+</div>
+
+  <div class="suggestions row align-items-center" *ngIf="suggestions.length">
+    <ul  class="list-group">
+      <li class="list-group-item" *ngFor="let s of suggestions" (click)="filter(s)">{{s.number}} - {{s.title}}</li>
+    </ul>
   </div>
