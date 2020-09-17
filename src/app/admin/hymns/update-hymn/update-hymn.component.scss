@@ -23,7 +23,14 @@ padding: 15px;
   animation: shake 1s;
   animation-iteration-count: infinite;
 }
+.cdk-drag-placeholder{
+  border:solid 1px #F00;
+  opacity: .2;
+}
+.cdk-drag:mousedown{
+  box-shadow: 0 0 5px;
 
+}
 .files-list {
   margin-top: 1.5rem;
 

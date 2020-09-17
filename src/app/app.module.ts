@@ -28,7 +28,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { DragAndDropDirective } from './directive/drag-and-drop.directive';
 
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,8 @@ import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } fro
       positionClass: 'toast-top-center',
 
     }),
+    BrowserModule,
+    DragDropModule
   ],
   providers: [{
       provide: 'SocialAuthServiceConfig',
@@ -76,7 +79,7 @@ import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } fro
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('319413929151550'),
           }
-          
+
         ],
       } as SocialAuthServiceConfig,
   }],

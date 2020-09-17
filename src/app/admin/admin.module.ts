@@ -25,6 +25,7 @@ import { CreateLanguageComponent } from './language/create-language/create-langu
 import { ListLanguagesComponent } from './language/list-languages/list-languages.component';
 import { UpdateLanguageComponent } from './language/update-language/update-language.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -58,7 +59,8 @@ import { UserListComponent } from './user/user-list/user-list.component';
     NouisliderModule,
     RouterModule,
     JwBootstrapSwitchNg2Module,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    DragDropModule
   ]
 })
 export class AdminModule { }

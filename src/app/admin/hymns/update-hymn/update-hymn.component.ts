@@ -11,6 +11,7 @@ import { NgForm, FormArray, FormBuilder, Validators, AbstractControl } from "@an
 import { HymnService } from './../../../services/hymn.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-update-hymn',
@@ -49,7 +50,16 @@ export class UpdateHymnComponent implements OnInit {
     private toastr: ToastrService) { }
 
   @Output('newSubForm') submitFormObjectToParent: EventEmitter<any> = new EventEmitter();
-
+  onDrop(event: CdkDragDrop<string[]>) {
+    this.hymn.parts[event.previousIndex].order = event.currentIndex;
+    moveItemInArray(
+      this.hymn.parts,
+      event.previousIndex,
+      event.currentIndex
+    )/**/
+    this.hymn.parts[event.previousIndex].order = event.currentIndex;
+    //this.hymn.parts.splice(even.currentIndex, 0, this.hymn.parts.splice(event.previousIndex, 1)[0]);
+  }
 
   form = this.fb.group({
     title: ['', Validators.required],
@@ -68,7 +78,9 @@ export class UpdateHymnComponent implements OnInit {
     this.typePartService.getAllTypePart().subscribe(data => this.typeParts = data.data)
   }
   save() {
-    this.hymn.files=this.hymn.files||[]
+    this.hymn.files = this.hymn.files || []
+
+    this.hymn.parts.forEach((p: Part, i: number) => p.order = i)
     this.hymnService.update(this.hymn).subscribe(data => {
       if (data.status == 200) {
         this.toastr.success('Success', "It's done!");
@@ -153,12 +165,12 @@ export class UpdateHymnComponent implements OnInit {
     this.uploadFilesSimulator(0);
   }
   onFileSelect(input) {
-    for(let i=0;i<input.files.length;i++){
+    for (let i = 0; i < input.files.length; i++) {
       var reader = new FileReader();
       reader.onload = (e: any) => {
-        let data=e.target.result;
+        let data = e.target.result;
         console.log(data)
-        this.hymn.files.push({data:data,title:this.hymn.title,type:data.split(';base64,')[0].split(':')[1]});
+        this.hymn.files.push({ data: data, title: this.hymn.title, type: data.split(';base64,')[0].split(':')[1] });
       }
       reader.readAsDataURL(input.files[i]);
     }

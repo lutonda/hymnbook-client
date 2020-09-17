@@ -1,3 +1,4 @@
+
 <div class="wrapper">
   <div class="page-header page-header-small">
     <div class="page-header-image rellax-header" data-rellax-speed="-18"
@@ -51,17 +52,21 @@
                 <div class="col-md-8">
                   <h2>Parts</h2>
                 </div>
-                <div class="col-md-4">
-                  <button type="button" class="btn btn-default btn-simple pull-right" (click)="addPart()">
+                <div class="col-md-4 text-right">
+                  <button type="button" class="btn btn-primary btn-icon btn-round" (click)="addPart()">
                     <i class="now-ui-icons ui-1_simple-add"></i>
                   </button>
                 </div>
               </div>
               <div class="col-md-12">
-                <blockquote>
+                <blockquote
+                      cdkDropList
+                      #partsList="cdkDropList"
+                      [cdkDropListData]="hymn.parts"
+                      (cdkDropListDropped)="onDrop($event)"
+                      >
                   <div @list class="list-container">
-                    <div @items class="box blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index">
-
+                    <div @items class="box blockquote blockquote-primary" *ngFor="let item of hymn.parts; let i=index" cdkDrag>
                       <textarea class="form-control" rows="4" cols="80" placeholder="You can write your text here..."
                         [(ngModel)]="item.text" name="text_{{i}}" [ngModelOptions]="{standalone: true}"></textarea>
 
