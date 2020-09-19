@@ -1,4 +1,5 @@
 import { Hymn } from './../../models/hymn';
+import { Part } from './../../models/part';
 import { HymnService } from 'app/services/hymn.service';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -31,10 +32,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class HymnsComponent implements OnInit {
   @Input() searchData = new EventEmitter();
   hymn = new Hymn();
-  order = 0;
-  incress() {
-    this.order++;
-  }
+  order = 1;
   // Material Style Basic Audio Player Title and Audio URL
   msbapTitle = 'Audio Title';
   msbapAudioUrl = null;
@@ -54,6 +52,8 @@ export class HymnsComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     this.service.getOneHymn(id).subscribe(data => {
       this.hymn = data.data
+
+      this.hymn.parts.forEach((part: Part)=>part.order=part.typePart.description=='Estrofe' ? this.order++ : 0)
       this.msbapAudioUrl = `http://${this.service.serverAddress()}/api/v1/files/${this.hymn.files[0].identity}`;
     })
   }
