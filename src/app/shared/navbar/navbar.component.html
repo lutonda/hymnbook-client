@@ -12,25 +12,7 @@
         </div>
         <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="https://www.creative-tim.com/product/now-ui-kit-angular" target="_blank">
-                      <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                      <p>Download</p>
-                  </a>
-              </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://creativetimofficial.github.io/now-ui-kit-angular/documentation/tutorial" target="_blank">
-                      <i class="now-ui-icons files_paper"></i>
-                      <p>Documentation</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-neutral" routerLink="/admin/hymns">
-                        <i class="now-ui-icons arrows-1_share-66"></i>
-                        <p>Admin</p>
-                    </a>
-                </li>
-                <li class="nav-item">
+            <li class="nav-item">
                   <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
                     <i class="fab fa-twitter"></i>
                     <p class="d-lg-none d-xl-none">Twitter</p>
@@ -48,21 +30,33 @@
                     <p class="d-lg-none d-xl-none">Instagram</p>
                   </a>
                 </li>
-                <li class="nav-item">
 
-                <div *ngIf="loggedIn===false;">
-                  <a class="nav-link btn btn-dark" rel="tooltip" title="Stay Connected" data-placement="bottom" (click)="signInFacebook()">
-                    <i class="SigIn fab fa-facebook-square" style="font-size: 15px;"></i> SigIn
-                    
+              <li class="nav-item">
+                  <a class="nav-link" href="#" target="_blank">
+                      <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                      <p>Download</p>
                   </a>
-                </div>
+              </li>
+                <li class="nav-item hidden">
+                    <a class="nav-link" href="https://creativetimofficial.github.io/now-ui-kit-angular/documentation/tutorial" target="_blank">
+                      <i class="now-ui-icons files_paper"></i>
+                      <p>Documentation</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-neutral" routerLink="/admin/hymns">
+                        <i class="now-ui-icons arrows-1_share-66"></i>
+                        <p>Admin</p>
+                    </a>
+                </li>
                 
-                <div *ngIf="loggedIn===true;">
-                  <a class="nav-link logout" rel="tooltip" title="Connected" data-placement="bottom" style="padding:3px;">
-                    <div><img src="{{user.photoUrl}}" style="width: 40px; margin:0; padding: 3px; border-radius: 50%;"/>{{user.name}}<span class="badge badge-primary" (click)="logOut()">LogOut</span></div>                      
+                <li class="nav-item">
+                  <a style="padding: 13px 22px;" *ngIf="loggedIn===false;" class="nav-link btn btn-dark" rel="tooltip" title="Stay Connected" data-placement="bottom" (click)="signInFacebook()">
+                    <i class="SigIn fab fa-facebook-square" style="font-size: 15px;"></i> SigIn
                   </a>
-                  
-                </div>             
+                  <a style="padding: 13px 22px;" *ngIf="loggedIn===true;" class="nav-link logout" rel="tooltip" title="Connected" data-placement="bottom" style="padding:3px;">
+                    <div><img src="{{user.photoUrl}}" style="width: 40px; margin:0; padding: 3px; border-radius: 50%;"/>{{user.name}}<span class="badge badge-primary" (click)="logOut()">LogOut</span></div>                      
+                  </a>           
                 </li>
 
                 
