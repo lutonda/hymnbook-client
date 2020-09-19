@@ -23,7 +23,7 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FooterComponent } from './shared/footer/footer.component';
 import { DragAndDropDirective } from './directive/drag-and-drop.directive';
 
@@ -31,12 +31,23 @@ import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } fro
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { BrowserModule } from '@angular/platform-browser';
 
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTransalationLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http,'./assets/i18n/','.json');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
     DragAndDropDirective
+  ],
+  exports:[
+    TranslateModule
   ],
   imports: [
     BrowserAnimationsModule,
@@ -68,7 +79,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
     }),
     BrowserModule,
-    DragDropModule
+    DragDropModule,
+
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTransalationLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [{
       provide: 'SocialAuthServiceConfig',

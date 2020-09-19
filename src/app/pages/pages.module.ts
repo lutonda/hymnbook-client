@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CommonModule } from '@angular/common';
       RouterModule,
       JwBootstrapSwitchNg2Module,
       AutocompleteLibModule,
-      NgxAudioPlayerModule
+      NgxAudioPlayerModule,
+      TranslateModule
     ],
   declarations: [
     HymnsComponent,

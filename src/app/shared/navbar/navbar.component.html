@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" [routerLink]="['/index']" placement="bottom" ngbTooltip="Go to the Home page">
-                H O M E
+                {{"H O M E"|translate}}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar bar1"></span>
@@ -12,54 +12,60 @@
         </div>
         <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
             <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                  <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                    <p class="d-lg-none d-xl-none">Twitter</p>
-                  </a>
-                </li>
                 <li class="nav-item">
-                  <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
-                    <i class="fab fa-facebook-square"></i>
-                    <p class="d-lg-none d-xl-none">Facebook</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    <p class="d-lg-none d-xl-none">Instagram</p>
-                  </a>
-                </li>
-
-              <li class="nav-item">
-                  <a class="nav-link" href="#" target="_blank">
-                      <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                      <p>Download</p>
-                  </a>
-              </li>
-                <li class="nav-item hidden">
-                    <a class="nav-link" href="https://creativetimofficial.github.io/now-ui-kit-angular/documentation/tutorial" target="_blank">
-                      <i class="now-ui-icons files_paper"></i>
-                      <p>Documentation</p>
+                    <a class="nav-link" rel="tooltip" title='{{"Follow us on" |translate}} Twitter' data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                        <p class="d-lg-none d-xl-none">Twitter</p>
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title='{{"Like us on" |translate}} Facebook' data-placement="bottom " href="https://www.facebook.com/CreativeTim " target="_blank ">
+                        <i class="fab fa-facebook-square "></i>
+                        <p class="d-lg-none d-xl-none ">Facebook</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " rel="tooltip " title='{{"Follow us on" |translate}} Instagram' data-placement="bottom " href="https://www.instagram.com/CreativeTimOfficial " target="_blank ">
+                        <i class="fab fa-instagram "></i>
+                        <p class="d-lg-none d-xl-none ">Instagram</p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link " href="# " target="_blank ">
+                        <i class="now-ui-icons arrows-1_cloud-download-93 "></i>
+                        <p translate>Download</p>
+                    </a>
+                </li>
+                <li class="nav-item hidden ">
+                    <a class="nav-link " href="https://creativetimofficial.github.io/now-ui-kit-angular/documentation/tutorial " target="_blank ">
+                        <i class="now-ui-icons files_paper "></i>
+                        <p>Documentation</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
                     <a class="nav-link btn btn-neutral" routerLink="/admin/hymns">
-                        <i class="now-ui-icons arrows-1_share-66"></i>
+                        <i class="now-ui-icons arrows-1_share-66 "></i>
                         <p>Admin</p>
                     </a>
                 </li>
-                
-                <li class="nav-item">
-                  <a style="padding: 13px 22px;" *ngIf="loggedIn===false;" class="nav-link btn btn-dark" rel="tooltip" title="Stay Connected" data-placement="bottom" (click)="signInFacebook()">
-                    <i class="SigIn fab fa-facebook-square" style="font-size: 15px;"></i> SigIn
-                  </a>
-                  <a style="padding: 13px 22px;" *ngIf="loggedIn===true;" class="nav-link logout" rel="tooltip" title="Connected" data-placement="bottom" style="padding:3px;">
-                    <div><img src="{{user.photoUrl}}" style="width: 40px; margin:0; padding: 3px; border-radius: 50%;"/>{{user.name}}<span class="badge badge-primary" (click)="logOut()">LogOut</span></div>                      
-                  </a>           
+
+                <li class="nav-item ">
+                    <a style="padding: 13px 22px; " *ngIf="loggedIn===false; " class="nav-link btn btn-dark " rel="tooltip " title="Stay Connected " data-placement="bottom " (click)="signInFacebook() ">
+                        <i class="SigIn fab fa-facebook-square " style="font-size: 15px; "></i> {{"SignIn "|translate}}
+                    </a>
+                    <a style="padding: 13px 22px; " *ngIf="loggedIn===true; " class="nav-link logout " rel="tooltip " title="Connected " data-placement="bottom " style="padding:3px; ">
+                        <div><img src="{{user.photoUrl}} " style="width: 40px; margin:0; padding: 3px; border-radius: 50%; " />{{user.name}}<span class="badge badge-primary " (click)="logOut() ">LogOut</span></div>
+                    </a>
+                </li>
+                <li class="nav-item i18n">
+                    <a class="nav-link btn btn-sm btn-neutral {{i18n=='en'?'active':''}}" (click)="switchLanguage( 'en')">EN </a>
+                    <a class="nav-link btn btn-sm btn-neutral {{i18n=='pt'?'active':''}}" (click)="switchLanguage( 'pt')">PT</a>
+
                 </li>
 
-                
+
+
             </ul>
         </div>
     </div>

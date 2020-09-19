@@ -35,6 +35,8 @@
     "@ngx-loading-bar/core": "^5.1.0",
     "@ngx-loading-bar/http-client": "^5.1.0",
     "@ngx-loading-bar/router": "^5.1.0",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "ajv": "6.10.0",
     "ajv-keywords": "3.4.0",
     "angular-ng-autocomplete": "^2.0.1",

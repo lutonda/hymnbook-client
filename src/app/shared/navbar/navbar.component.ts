@@ -9,6 +9,8 @@ import { SocialAuthService, FacebookLoginProvider, SocialUser } from 'angularx-s
 
 import {AuthenficationService} from 'app/services/authenfication.service';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -18,21 +20,23 @@ export class NavbarComponent implements OnInit {
 
     user: SocialUser;
     loggedIn: Boolean=false;
-
+    i18n='en';
     private toggleButton: any;
     private sidebarVisible: boolean=false;
 
     constructor(
-        public location: Location, 
+        public location: Location,
         private element : ElementRef,
         private authService: SocialAuthService,
-        private router: Router, 
-        private authentification: AuthenficationService, 
+        private router: Router,
+        private authentification: AuthenficationService,
         private userService: UserService,
         private toastr: ToastrService,
-        private http: HttpClient
-        
+        private http: HttpClient,
+        private translate:TranslateService
         ) {
+        translate.setDefaultLang('en')
+        this.i18n=authentification.i18n().get()
         this.sidebarVisible = false;
     }
 
@@ -41,8 +45,8 @@ export class NavbarComponent implements OnInit {
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
 
         this.user = new SocialUser();
-        
-        
+
+
         if(this.authentification.active()){
 
             this.loggedIn=true;
@@ -54,7 +58,7 @@ export class NavbarComponent implements OnInit {
     }
 
     signInFacebook():void{
-        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => 
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data =>
         {
             this.loggedIn=true;
             this.user = this.authentification.sig(data, this.userService);
@@ -77,6 +81,7 @@ export class NavbarComponent implements OnInit {
 
         this.sidebarVisible = true;
     };
+
     sidebarClose() {
         const html = document.getElementsByTagName('html')[0];
         // console.log(html);
@@ -84,6 +89,7 @@ export class NavbarComponent implements OnInit {
         this.sidebarVisible = false;
         html.classList.remove('nav-open');
     };
+
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
         // const body = document.getElementsByTagName('body')[0];
@@ -93,7 +99,7 @@ export class NavbarComponent implements OnInit {
             this.sidebarClose();
         }
     };
-  
+
     isDocumentation() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         if( titlee === '/documentation' ) {
@@ -102,5 +108,12 @@ export class NavbarComponent implements OnInit {
         else {
             return false;
         }
+    }
+
+
+    switchLanguage(language:string){
+      this.translate.use(language)
+      this.authentification.i18n().set(language)
+      this.i18n=language;
     }
 }
