@@ -5,6 +5,7 @@ import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 
+import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-hymns',
 
@@ -26,20 +27,29 @@ import { trigger, transition, style, animate } from '@angular/animations';
     )
   ],
   templateUrl: './hymns.component.html',
-  styleUrls: ['./hymns.component.css']
+  styleUrls: ['./hymns.component.css'],
+  providers: [NgbRatingConfig]
 })
 
 export class HymnsComponent implements OnInit {
   @Input() searchData = new EventEmitter();
   hymn = new Hymn();
   order = 1;
+
+  selected = 0;
+  hovered = 0;
+  readonly = false;
+
   // Material Style Basic Audio Player Title and Audio URL
   msbapTitle = 'Audio Title';
   msbapAudioUrl = null;
 
   msbapDisplayTitle = false;
   msbapDisplayVolumeControls = true;
-  constructor(private service: HymnService, private route: ActivatedRoute) { }
+  constructor(private service: HymnService, private route: ActivatedRoute, private config: NgbRatingConfig) {
+    config.max = 5;
+    config.readonly = true;
+   }
   onApplyFilter(item) {
     this.service.getOneHymn(item._id).subscribe(data => {
       this.hymn = data.data;
@@ -53,7 +63,7 @@ export class HymnsComponent implements OnInit {
     this.service.getOneHymn(id).subscribe(data => {
       this.hymn = data.data
 
-      this.hymn.parts.forEach((part: Part)=>part.order=part.typePart.description=='Estrofe' ? this.order++ : 0)
+      this.hymn.parts.forEach((part: Part)=>part.order=part.typePart.description=='Stanza' ? this.order++ : 0)
       this.msbapAudioUrl = `http://${this.service.serverAddress()}/api/v1/files/${this.hymn.files[0].identity}`;
     })
   }

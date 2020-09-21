@@ -1,4 +1,24 @@
 {
-    "Title": "Exemple de traduction",
-    "Intro": "Bonjour je m'appelle Arthur, j'ai 42 ans."
+
+    "H O M E": "D É B U T",
+    "Intro": "Intro",
+    "SignIn": "Connexion",
+    "Download": "Télécharger",
+    "Follow us": "Suivez-nous",
+    "Follow us on": "Suivez-nous sur",
+    "Like us on": "Aimez-nous sur",
+
+    "Share it": "Partager",
+    "Share it on": "Partager sur {{sn}}",
+    "Hymnbook": "Livre de cantiques",
+    "Find a Hymn by title or number": "Rechercher un cantique par titre ou par numéro",
+    "Open collection of Conventional Hymnbook": "Collection ouverte d'Hymnes conventionnel",
+    
+    "Portuguese": "portugais",
+    "French": "Français",
+    "English": "Anglais",
+    "Spanish": "Espagnol",
+
+    "Chorus": "Refrain",
+    "Stanza": "Strophe"
 }

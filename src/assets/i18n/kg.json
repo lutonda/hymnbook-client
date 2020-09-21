@@ -1,4 +1,23 @@
 {
-    "Title": "Exemple de traduction",
-    "Intro": "Bonjour je m'appelle Arthur, j'ai 42 ans."
+    "H O M E": "N G I N T I K I L U",
+    "Intro": "Intro",
+    "SignIn": "Kota",
+    "Download": "Baixar",
+    "Follow us": "Siga nos",
+    "Follow us on": "Siga nos no",
+    "Like us on": "Siga nos no",
+
+    "Share it": "Partilhe",
+    "Share it on": "Partilhe no {{sn}}",
+    "Hymnbook": "Nkunga",
+    "Find a Hymn by title or number": "Encontre uma musica pelo titulo ou numero",
+    "Open collection of Conventional Hymnbook": "Coleção aberta de Hinário convencional",
+    "Portuguese": "Português",
+    "French": "Franês",
+    "English": "Inglês",
+
+
+
+    "Chorus": "Refrão",
+    "Stanza": "Estrofe"
 }
